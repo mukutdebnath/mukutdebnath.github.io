@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Experiences on Mukut Portfolio</title>
+    <link>https://mukutdebnath.github.io/website/experience/</link>
+    <description>Recent content in Experiences on Mukut Portfolio</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 10 Dec 2024 23:33:09 +0530</lastBuildDate>
+    <atom:link href="https://mukutdebnath.github.io/website/experience/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Purdue</title>
+      <link>https://mukutdebnath.github.io/website/experience/purdue/</link>
+      <pubDate>Tue, 10 Dec 2024 23:33:09 +0530</pubDate>
+      <guid>https://mukutdebnath.github.io/website/experience/purdue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Isro</title>
+      <link>https://mukutdebnath.github.io/website/experience/isro/</link>
+      <pubDate>Tue, 10 Dec 2024 23:33:01 +0530</pubDate>
+      <guid>https://mukutdebnath.github.io/website/experience/isro/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
