@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Day for You 🌹</title>
+    <style>
+        :root {
+            --rose-red: #e63946;
+            --exam-blue: #457b9d;
+            --meet-gold: #f4a261;
+            --cadbury-purple: #472f92;
+            --bg-color: #fff5f6;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.8s ease;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            text-align: center;
+            border: 1px solid white;
+        }
+
+        .icon { font-size: 80px; margin-bottom: 20px; display: inline-block; }
+        
+        /* Animations */
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+        .wobble { animation: wobble 2s ease-in-out infinite; }
+        .float { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        @keyframes wobble { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+        .slide { display: none; animation: slideIn 0.5s ease-out; }
+        .active { display: block; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .chocolate-img {
+            width: 200px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 8px 20px rgba(71, 47, 146, 0.3);
+        }
+
+        h2 { color: #333; margin-bottom: 15px; }
+        p { color: #555; line-height: 1.7; min-height: 80px; }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        button {
+            background: var(--rose-red);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:disabled { background: #ccc; cursor: not-allowed; }
+
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; }
+        .active-dot { background: var(--rose-red); }
+    </style>
+</head>
+<body>
+
+<div class="carousel-container">
+    <div class="slide active">
+        <span class="icon pulse">🌹</span>
+        <h2>Happy Rose Day!</h2>
+        <p>A little digital bloom to start your week with a smile. You're my favorite person!</p>
+    </div>
+
+    <div class="slide">
+        <span class="icon wobble">🍀</span>
+        <h2>Exam Mode: ON</h2>
+        <p>Don't stress, you've worked so hard. Just do your best—I'm already proud of you!</p>
+    </div>
+
+    <div class="slide">
+        <span class="icon float">☕</span>
+        <h2>Post-Exam Plan</h2>
+        <p>The countdown to seeing you starts now. Can't wait to hear how it went!</p>
+    </div>
+
+    <div class="slide">
+        <img src="images/dairy_milk_heart_blush.jpg" alt="Cadbury Heart Blush" class="chocolate-img">
+        <h2 style="color: var(--cadbury-purple);">A Sweet Treat!</h2>
+        <p>A little virtual Dairy Milk for your post-exam cravings. A real one is waiting for you later! ❤️</p>
+    </div>
+
+    <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
+        <div style="display:flex; gap:8px;">
+            <div class="dot active-dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+    </div>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const colors = ['#fff5f6', '#f0f7fa', '#fff9f0', '#f3f0ff'];
+    const btnColors = ['#e63946', '#457b9d', '#f4a261', '#472f92'];
+
+    function changeSlide(direction) {
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active-dot');
+
+        currentSlide += direction;
+
+        // Loop back if finished
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active-dot');
+
+        // Update Colors
+        document.body.style.backgroundColor = colors[currentSlide];
+        document.getElementById('nextBtn').style.backgroundColor = btnColors[currentSlide];
+        document.getElementById('prevBtn').style.backgroundColor = btnColors[currentSlide];
+
+        // Update Button Text
+        document.getElementById('prevBtn').disabled = currentSlide === 0;
+        const nextBtn = document.getElementById('nextBtn');
+        
+        if (currentSlide === 2) {
+            nextBtn.innerText = "See you soon! ❤️";
+        } else if (currentSlide === 3) {
+            nextBtn.innerText = "Start Over ✨";
+        } else {
+            nextBtn.innerText = "Next";
+        }
+    }
+</script>
+
+</body>
+</html>
