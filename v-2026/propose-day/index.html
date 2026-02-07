@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propose Day - Coming Soon</title>
+    <style>
+        :root {
+            --propose-blue: #0077b6;
+            --bg-color: #f0f7fa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 50px 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 2px solid var(--propose-blue);
+        }
+
+        .loader {
+            font-size: 60px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        h2 { color: var(--propose-blue); margin-bottom: 10px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 30px; }
+
+        .back-link {
+            text-decoration: none;
+            color: #888;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: var(--propose-blue); }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="loader">💍</div>
+    <h2>Something is brewing...</h2>
+    <p>Propose Day surprises are being polished! Check back in a little bit to see what's inside.</p>
+    
+    <a href="../index.html" class="back-link">
+        🏠 Back to the Menu
+    </a>
+</div>
+
+</body>
+</html>

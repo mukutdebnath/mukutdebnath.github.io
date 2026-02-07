@@ -3,54 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Workflow Test</title>
+    <title>Our Valentine's Week 2026</title>
     <style>
+        :root {
+            --rose-red: #e63946;
+            --propose-blue: #0077b6;
+            --chocolate-brown: #7f5539;
+            --teddy-orange: #fb8500;
+            --promise-green: #2a9d8f;
+            --hug-purple: #8338ec;
+            --kiss-pink: #ff006e;
+            --vday-gold: #d4a373;
+        }
+
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            margin: 0;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #fff5f6 0%, #ffdee2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            min-height: 100vh;
+            color: #444;
         }
-        .card {
+
+        .hub-container {
+            width: 90%;
+            max-width: 500px;
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 40px 20px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             text-align: center;
-            max-width: 400px;
         }
-        h1 {
-            color: #27ae60; /* Green for success */
-            margin-bottom: 0.5rem;
+
+        h1 { color: #e63946; margin-bottom: 5px; }
+        .subtitle { font-size: 0.9rem; color: #888; margin-bottom: 30px; }
+
+        .days-list {
+            display: grid;
+            gap: 12px;
         }
-        p {
-            line-height: 1.6;
-            color: #666;
+
+        .day-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 25px;
+            background: white;
+            border: 2px solid #f0f0f0;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #555;
+            transition: all 0.3s ease;
+            font-weight: bold;
         }
-        .badge {
-            display: inline-block;
-            background: #e1ecf4;
-            color: #39739d;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            font-family: monospace;
-            margin-top: 1rem;
+
+        /* Logic for Active/Unlocked Days */
+        .day-link.unlocked:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
+
+        /* Specific Day Styling */
+        .rose { border-color: var(--rose-red); color: var(--rose-red); background: #fffafa; }
+        .propose { border-color: var(--propose-blue); color: var(--propose-blue); }
+        .chocolate { border-color: var(--chocolate-brown); color: var(--chocolate-brown); }
+        .teddy { border-color: var(--teddy-orange); color: var(--teddy-orange); }
+        .promise { border-color: var(--promise-green); color: var(--promise-green); }
+        .hug { border-color: var(--hug-purple); color: var(--hug-purple); }
+        .kiss { border-color: var(--kiss-pink); color: var(--kiss-pink); }
+        .vday { border-color: var(--vday-gold); color: var(--vday-gold); border-style: dashed; }
+
+        /* Locked State override */
+        .day-link.locked {
+            opacity: 0.4;
+            filter: grayscale(1);
+            cursor: not-allowed;
+            border-color: #eee;
+            color: #888;
+        }
+
+        .date-label { font-size: 0.8rem; font-family: monospace; opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <h1>✅ Setup Successful!</h1>
-        <p>If you can see this page, your static website structure is ready.</p>
-        <p>Now, go back to your terminal to track this file.</p>
-        <div class="badge">git status</div>
+<div class="hub-container">
+    <h1>Valentine's Week</h1>
+    <p class="subtitle">A surprise for every day of February 2026</p>
+
+    <div class="days-list">
+        <a href="rose-day/index.html" class="day-link unlocked rose">
+            <span>Rose Day</span>
+            <span class="date-label">Feb 07</span>
+        </a>
+
+        <a href="propose-day/index.html" class="day-link unlocked propose">
+            <span>Propose Day</span>
+            <span class="date-label">Feb 08</span>
+        </a>
+
+        <a href="#" class="day-link locked chocolate">
+            <span>Chocolate Day</span>
+            <span class="date-label">Feb 09</span>
+        </a>
+
+        <a href="#" class="day-link locked teddy">
+            <span>Teddy Day</span>
+            <span class="date-label">Feb 10</span>
+        </a>
+
+        <a href="#" class="day-link locked promise">
+            <span>Promise Day</span>
+            <span class="date-label">Feb 11</span>
+        </a>
+
+        <a href="#" class="day-link locked hug">
+            <span>Hug Day</span>
+            <span class="date-label">Feb 12</span>
+        </a>
+
+        <a href="#" class="day-link locked kiss">
+            <span>Kiss Day</span>
+            <span class="date-label">Feb 13</span>
+        </a>
+
+        <a href="#" class="day-link locked vday">
+            <span>VALENTINE'S DAY</span>
+            <span class="date-label">Feb 14</span>
+        </a>
     </div>
+</div>
 
 </body>
 </html>
