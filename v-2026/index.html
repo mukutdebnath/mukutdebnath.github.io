@@ -1,140 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Valentine's Week 2026</title>
-    <style>
-        :root {
-            --rose-red: #e63946;
-            --propose-blue: #0077b6;
-            --chocolate-brown: #7f5539;
-            --teddy-orange: #fb8500;
-            --promise-green: #2a9d8f;
-            --hug-purple: #8338ec;
-            --kiss-pink: #ff006e;
-            --vday-gold: #d4a373;
-        }
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="theme-theme">
+    <div class="signature-wrap">
+      <div class="signature-text header-text">from dumbo...</div>
+      <div class="hub-container">
+        <h1>Valentine's Week</h1>
+        <p class="subtitle">A small surprise for each day</p>
 
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #fff5f6 0%, #ffdee2 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #444;
-        }
-
-        .hub-container {
-            width: 90%;
-            max-width: 500px;
-            background: white;
-            padding: 40px 20px;
-            border-radius: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        h1 { color: #e63946; margin-bottom: 5px; }
-        .subtitle { font-size: 0.9rem; color: #888; margin-bottom: 30px; }
-
-        .days-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .day-link {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 25px;
-            background: white;
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            text-decoration: none;
-            color: #555;
-            transition: all 0.3s ease;
-            font-weight: bold;
-        }
-
-        /* Logic for Active/Unlocked Days */
-        .day-link.unlocked:hover {
-            transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
-        /* Specific Day Styling */
-        .rose { border-color: var(--rose-red); color: var(--rose-red); background: #fffafa; }
-        .propose { border-color: var(--propose-blue); color: var(--propose-blue); }
-        .chocolate { border-color: var(--chocolate-brown); color: var(--chocolate-brown); }
-        .teddy { border-color: var(--teddy-orange); color: var(--teddy-orange); }
-        .promise { border-color: var(--promise-green); color: var(--promise-green); }
-        .hug { border-color: var(--hug-purple); color: var(--hug-purple); }
-        .kiss { border-color: var(--kiss-pink); color: var(--kiss-pink); }
-        .vday { border-color: var(--vday-gold); color: var(--vday-gold); border-style: dashed; }
-
-        /* Locked State override */
-        .day-link.locked {
-            opacity: 0.4;
-            filter: grayscale(1);
-            cursor: not-allowed;
-            border-color: #eee;
-            color: #888;
-        }
-
-        .date-label { font-size: 0.8rem; font-family: monospace; opacity: 0.8; }
-    </style>
-</head>
-<body>
-
-<div class="hub-container">
-    <h1>Valentine's Week</h1>
-    <p class="subtitle">A surprise for every day of February 2026</p>
-
-    <div class="days-list">
-        <a href="rose-day/index.html" class="day-link unlocked rose">
+        <div class="days-list">
+          <a href="rose-day/index.html" class="day-link unlocked rose">
             <span>Rose Day</span>
             <span class="date-label">Feb 07</span>
-        </a>
+          </a>
 
-        <a href="propose-day/index.html" class="day-link unlocked propose">
+          <a href="propose-day/index.html" class="day-link unlocked propose">
             <span>Propose Day</span>
             <span class="date-label">Feb 08</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked chocolate">
+          <a href="#" class="day-link locked chocolate">
             <span>Chocolate Day</span>
             <span class="date-label">Feb 09</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked teddy">
+          <a href="#" class="day-link locked teddy">
             <span>Teddy Day</span>
             <span class="date-label">Feb 10</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked promise">
+          <a href="#" class="day-link locked promise">
             <span>Promise Day</span>
             <span class="date-label">Feb 11</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked hug">
+          <a href="#" class="day-link locked hug">
             <span>Hug Day</span>
             <span class="date-label">Feb 12</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked kiss">
+          <a href="#" class="day-link locked kiss">
             <span>Kiss Day</span>
             <span class="date-label">Feb 13</span>
-        </a>
+          </a>
 
-        <a href="#" class="day-link locked vday">
+          <a href="#" class="day-link locked vday">
             <span>VALENTINE'S DAY</span>
             <span class="date-label">Feb 14</span>
-        </a>
+          </a>
+        </div>
+      </div>
+      <div class="signature-text footer-text">...to his madam</div>
     </div>
-</div>
-
-</body>
+  </body>
 </html>

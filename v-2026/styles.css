@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&family=Poppins:wght@300;400&display=swap');
+
+/* 1. Variables & Reset */
+:root {
+    /* Theme colour */
+    --theme-red: #a30105;
+    /* Day Colors */
+    --rose-red: #e63946;
+    --propose-blue: #0077b6;
+    --chocolate-brown: #7f5539;
+    --teddy-orange: #fb8500;
+    --promise-green: #2a9d8f;
+    --hug-purple: #8338ec;
+    --kiss-pink: #ff006e;
+    --vday-gold: #d4a373;
+    
+    /* System Colors */
+    --bg-default: #fff5f6;
+    --text-main: #333;
+    --text-muted: #888;
+}
+
+body {
+    margin: 0;
+    font-family: 'Georgia', serif;
+    background-color: var(--bg-default);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.8s ease;
+    color: var(--text-main);
+}
+
+h1 { color: #e63946; margin-bottom: 5px; }
+.subtitle { font-size: 0.9rem; color: #888; margin-bottom: 30px; }
+
+/* 2. Container Logic */
+.hub-container, .carousel-container, .container {
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 30px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    text-align: center;
+    border: 2px solid transparent; 
+    position: relative;
+    transition: border-color 0.5s ease;
+}
+
+.signature-wrap {
+    width: 90%;
+    max-width: 400px; /* Matches carousel width */
+    display: flex;
+    flex-direction: column;
+}
+
+.signature-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2rem; /* Smaller size */
+    margin: 10px 0;
+    transition: color 0.5s ease;
+}
+
+/* Alignment Logic */
+.header-text {
+    align-self: flex-start; /* Left aligned */
+}
+
+.footer-text {
+    align-self: flex-end; /* Right aligned */
+}
+
+/* 3. The Color Engine (The 7 Themes) */
+/* This handles the Background of the Body AND the Border of the Container */
+
+/* Theme index page */
+body.theme-theme { background-color: #fff5f6; }
+body.theme-theme .container, body.theme-theme .hub-container { border-color: var(--theme-red); }
+body.theme-theme button { background: var(--theme-red); }
+
+/* Rose */
+body.theme-rose { background-color: #fff5f6; }
+body.theme-rose .container, body.theme-rose .carousel-container { border-color: var(--rose-red); }
+body.theme-rose button { background: var(--rose-red); }
+
+/* Propose */
+body.theme-propose { background-color: #f0f7fa; }
+body.theme-propose .container, body.theme-propose .carousel-container { border-color: var(--propose-blue); }
+body.theme-propose button { background: var(--propose-blue); }
+
+/* Chocolate */
+body.theme-chocolate { background-color: #fdf5f2; }
+body.theme-chocolate .container, body.theme-chocolate .carousel-container { border-color: var(--chocolate-brown); }
+body.theme-chocolate button { background: var(--chocolate-brown); }
+
+/* Teddy */
+body.theme-teddy { background-color: #fff9f0; }
+body.theme-teddy .container, body.theme-teddy .carousel-container { border-color: var(--teddy-orange); }
+body.theme-teddy button { background: var(--teddy-orange); }
+
+/* Promise */
+body.theme-promise { background-color: #f0fafa; }
+body.theme-promise .container, body.theme-promise .carousel-container { border-color: var(--promise-green); }
+body.theme-promise button { background: var(--promise-green); }
+
+/* Hug/Kiss/Vday (Add similar blocks for --hug-purple, --kiss-pink, etc.) */
+
+/* 4. Element Styles */
+.loader, .icon { 
+    font-size: 70px; 
+    margin-bottom: 20px; 
+    display: inline-block; 
+}
+
+.date-header {
+    font-family: monospace;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+    width: 40%;
+}
+
+/* 4. Carousel & Element Styles */
+.slide { display: none; animation: fadeIn 0.5s ease; }
+.slide.active { display: block; }
+
+.photo-frame {
+    padding: 10px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: rotate(-2deg);
+    margin: 0 auto 15px auto;
+    display: inline-block;
+    /* animation: sway 4s ease-in-out infinite; */
+}
+
+.chocolate-img, .collage-img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* 5. Navigation */
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    min-width: 100px;
+}
+
+.proposal-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    position: relative;
+    min-height: 150px; /* Space for moving button */
+}
+
+#yesBtn {
+    background-color: var(--propose-blue); /* Default */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+    z-index: 11;
+}
+
+/* Force 'Yes' button to take the theme color from the body class */
+.theme-propose #yesBtn { background-color: var(--propose-blue) !important; }
+.theme-rose #yesBtn { background-color: var(--rose-red) !important; }
+
+/* The 'No' Button - White with Grey Background/Border */
+#noBtn {
+    background-color: #f0f0f0; /* Light grey background */
+    color: #666;               /* Dark grey text */
+    border: 2px solid #ddd;    /* Subtle border */
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+#noBtn:hover {
+    background-color: #e5e5e5;
+    border-color: #ccc;
+}
+
+/* Ensure 'No' button doesn't change color with themes */
+.theme-propose #noBtn, .theme-rose #noBtn {
+    background-color: #f0f0f0 !important;
+    color: #666 !important;
+}
+
+/* Custom Alert Styling */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    background: var(--propose-blue);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease;
+    z-index: 1000;
+}
+
+/* Default button color based on theme */
+.theme-rose button { background: var(--rose-red); }
+.theme-propose button { background: var(--propose-blue); }
+
+button:disabled { background: #ccc !important; cursor: not-allowed; }
+
+.dots-container { display: flex; gap: 8px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; }
+.active-dot { background: var(--rose-red); } /* Can be overridden via JS */
+
+.back-link {
+    margin-top: 25px;
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    display: block;
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* 6. Animations */
+.float {
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+/* 2. Wobble: Playful side-to-side tilt */
+.wobble {
+    animation: wobbleAnim 3s ease-in-out infinite;
+}
+
+/* 3. Pulse: Soft breathing/heartbeat effect */
+.pulse {
+    animation: pulseAnim 3s ease-in-out infinite;
+}
+
+/* --- Keyframes --- */
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes wobbleAnim {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+@keyframes pulseAnim {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* Index page styles */
+.days-list {
+    display: grid;
+    gap: 12px;
+}
+
+.day-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 25px;
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #555;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+/* Logic for Active/Unlocked Days */
+.day-link.unlocked:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Specific Day Styling */
+.rose { border-color: var(--rose-red); color: var(--rose-red); background: #fffafa; }
+.propose { border-color: var(--propose-blue); color: var(--propose-blue); }
+.chocolate { border-color: var(--chocolate-brown); color: var(--chocolate-brown); }
+.teddy { border-color: var(--teddy-orange); color: var(--teddy-orange); }
+.promise { border-color: var(--promise-green); color: var(--promise-green); }
+.hug { border-color: var(--hug-purple); color: var(--hug-purple); }
+.kiss { border-color: var(--kiss-pink); color: var(--kiss-pink); }
+.vday { border-color: var(--vday-gold); color: var(--vday-gold); border-style: dashed; }
+
+/* Locked State override */
+.day-link.locked {
+    opacity: 0.4;
+    filter: grayscale(1);
+    cursor: not-allowed;
+    border-color: #eee;
+    color: #888;
+}
+
+.date-label { font-size: 0.8rem; font-family: monospace; opacity: 0.8; }

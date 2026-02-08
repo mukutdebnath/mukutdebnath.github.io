@@ -1,214 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rose Day - Our Memories</title>
-    <style>
-        :root {
-            --rose-red: #e63946;
-            --bg-color: #fff5f6;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Georgia', serif;
-            background-color: var(--bg-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            transition: background-color 0.8s ease;
-            overflow: hidden;
-        }
-
-        .carousel-container {
-            width: 90%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px 30px;
-            border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            text-align: center;
-            border: 2px solid var(--rose-red);
-            position: relative;
-        }
-
-        .date-header {
-            font-family: monospace;
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .slide { display: none; animation: fadeIn 0.5s ease; }
-        .slide.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .icon { font-size: 70px; margin-bottom: 20px; display: inline-block; }
-        .chocolate-img, .collage-img {
-            width: 100%;
-            max-width: 250px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .photo-frame {
-            padding: 10px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transform: rotate(-2deg);
-            margin: 0 auto 15px auto;
-            display: inline-block;
-        }
-
-        h2 { color: #333; margin-top: 10px; }
-        p { color: #555; line-height: 1.6; min-height: 60px; }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        button {
-            background: var(--rose-red);
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            min-width: 100px;
-        }
-
-        button:disabled { background: #ccc; cursor: not-allowed; }
-
-        .dots-container { display: flex; gap: 8px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: #ddd; }
-        .dot.active-dot { background: var(--rose-red); }
-
-        .back-link {
-            margin-top: 25px;
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="theme-rose">
+    <div class="signature-wrap">
+      <div class="signature-text header-text">from dumbo...</div>
+      <div class="carousel-container">
+        <div class="date-header">FEBRUARY 07, 2026</div>
+        <hr
+          style="
+            border: 0;
             border-top: 1px solid #eee;
-            padding-top: 15px;
-            display: block;
-            text-decoration: none;
-            color: #888;
-            font-size: 0.85rem;
-        }
-    </style>
-</head>
-<body>
+            margin-bottom: 20px;
+            width: 40%;
+          "
+        />
 
-<div class="carousel-container">
-    <div class="date-header">FEBRUARY 07, 2026</div>
-    <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 20px; width: 40%;">
-
-    <div class="slide active">
-        <span class="icon wobble">🌹</span>
-        <h2>Happy Rose Day</h2>
-        <p>Very Good Morning Madam! Here is a digital rose to start your day with a smile.</p>
-    </div>
-
-    <div class="slide">
-        <span class="icon pulse">🤞🏼</span>
-        <h2>Exam Mode: GATE</h2>
-        <p>Chaap nis na! Remember the pattern and fadaya dis! I know you will do your best.</p>
-    </div>
-
-    <div class="slide">
-        <span class="icon float">☕</span>
-        <h2>Post-Exam</h2>
-        <p>Countdown to our first meet of 2026. Can't wait to do all the ferferi!</p>
-    </div>
-
-    <div class="slide">
-        <img src="images/dairy_milk_heart_blush.jpg" alt="Cadbury Heart Blush" class="chocolate-img">
-        <h2 style="color: var(--cadbury-purple);">The Sweet Treat!</h2>
-        <p>Virtual Dairy Milk for your post-exam cravings. The real one is waiting for you later! 😈</p>
-    </div>
-
-    <div class="slide">
-        <div class="photo-frame">
-            <img src="images/rose_day_photo.jpg" alt="Our Outing" class="collage-img">
+        <div class="slide active">
+          <span class="icon wobble">🌹</span>
+          <h2>Happy Rose Day</h2>
+          <p>
+            Very Good Morning Madam! Here is a digital rose to start your day
+            with a smile.
+          </p>
         </div>
-        <h2>Our Rose Day</h2>
-    </div>
 
-    <div class="nav-buttons">
-        <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
-        <div class="dots-container">
+        <div class="slide">
+          <span class="icon pulse">🤞🏼</span>
+          <h2>Exam Mode: GATE</h2>
+          <p>
+            Chaap nis na! Remember the pattern and fadaya dis! I know you will
+            do your best.
+          </p>
+        </div>
+
+        <div class="slide">
+          <span class="icon float">☕</span>
+          <h2>Post-Exam</h2>
+          <p>
+            Countdown to our first meet of 2026. Can't wait to do all the
+            ferferi!
+          </p>
+        </div>
+
+        <div class="slide">
+          <img
+            src="images/dairy_milk_heart_blush.jpg"
+            alt="Cadbury Heart Blush"
+            class="chocolate-img"
+          />
+          <h2 style="color: var(--cadbury-purple)">The Sweet Treat!</h2>
+          <p>
+            Virtual Dairy Milk for your post-exam cravings. The real one is
+            waiting for you later! 😈
+          </p>
+        </div>
+
+        <div class="slide">
+          <div class="photo-frame">
+            <img
+              src="images/rose_day_photo.jpg"
+              alt="Our Outing"
+              class="collage-img"
+            />
+          </div>
+          <h2>Our Rose Day</h2>
+        </div>
+
+        <div class="nav-buttons">
+          <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
+          <div class="dots-container">
             <div class="dot active-dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
             <div class="dot"></div>
+          </div>
+          <button id="nextBtn" onclick="changeSlide(1)">Next</button>
         </div>
-        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+
+        <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+      </div>
+      <div class="signature-text footer-text">...to his madam</div>
     </div>
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
 
-    <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
-</div>
+      // The sequence of themes matching your slides
+      const themes = [
+        "theme-rose", // Slide 1
+        "theme-propose", // Slide 2
+        "theme-teddy", // Slide 3
+        "theme-chocolate", // Slide 4
+        "theme-rose", // Slide 5 (Back to rose/pink for the memory)
+      ];
 
-<script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    
-    // Background colors for each slide
-    const colors = ['#fff5f6', '#f0f7fa', '#fff9f0', '#f3f0ff', '#fff0f3'];
-    // Button colors for each slide
-    const btnColors = ['#e63946', '#457b9d', '#f4a261', '#472f92', '#ff4d6d'];
-
-    function changeSlide(direction) {
+      function changeSlide(direction) {
         // Remove current active states
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active-dot');
+        slides[currentSlide].classList.remove("active");
+        dots[currentSlide].classList.remove("active-dot");
 
-        // Move index
+        // Update Index
         currentSlide += direction;
 
-        // FIXED LOOP LOGIC
+        // Loop Logic
         if (currentSlide >= slides.length) {
-            currentSlide = 0; // Go back to start
+          currentSlide = 0;
         } else if (currentSlide < 0) {
-            currentSlide = slides.length - 1; // Go to end
+          currentSlide = slides.length - 1;
         }
 
-        // Add new active states
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active-dot');
+        // Apply new slide and dot
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active-dot");
 
-        // Update Theme
-        document.body.style.backgroundColor = colors[currentSlide];
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        
-        nextBtn.style.backgroundColor = btnColors[currentSlide];
-        prevBtn.style.backgroundColor = btnColors[currentSlide];
+        // THE MAGIC: Swap the body class to update the whole theme
+        document.body.className = themes[currentSlide];
 
         // Button Text Logic
-        prevBtn.disabled = (currentSlide === 0);
+        const nextBtn = document.getElementById("nextBtn");
+        const prevBtn = document.getElementById("prevBtn");
+
+        prevBtn.disabled = currentSlide === 0;
 
         if (currentSlide === 2) {
-            nextBtn.innerText = "See you soon! ❤️";
+          nextBtn.innerText = "See you soon! ❤️";
         } else if (currentSlide === 3) {
-            nextBtn.innerText = "View Gallery 📸";
+          nextBtn.innerText = "View Gallery 📸";
         } else if (currentSlide === 4) {
-            nextBtn.innerText = "Start Over ✨";
+          nextBtn.innerText = "Start Over ✨";
         } else {
-            nextBtn.innerText = "Next";
+          nextBtn.innerText = "Next";
         }
-    }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
