@@ -9,82 +9,83 @@
   <body class="theme-rose">
     <div class="signature-wrap">
       <div class="signature-text header-text">from dumbo...</div>
-      <div class="carousel-container">
-        <div class="date-header">FEBRUARY 07, 2026</div>
-        <hr
-          style="
-            border: 0;
-            border-top: 1px solid #eee;
-            margin-bottom: 20px;
-            width: 40%;
-          "
-        />
+    </div>
+    <div class="carousel-container">
+      <div class="date-header">FEBRUARY 07, 2026</div>
+      <hr
+        style="
+          border: 0;
+          border-top: 1px solid #eee;
+          margin-bottom: 20px;
+          width: 40%;
+        "
+      />
 
-        <div class="slide active">
-          <span class="icon wobble">🌹</span>
-          <h2>Happy Rose Day</h2>
-          <p>
-            Very Good Morning Madam! Here is a digital rose to start your day
-            with a smile.
-          </p>
-        </div>
-
-        <div class="slide">
-          <span class="icon pulse">🤞🏼</span>
-          <h2>Exam Mode: GATE</h2>
-          <p>
-            Chaap nis na! Remember the pattern and fadaya dis! I know you will
-            do your best.
-          </p>
-        </div>
-
-        <div class="slide">
-          <span class="icon float">☕</span>
-          <h2>Post-Exam</h2>
-          <p>
-            Countdown to our first meet of 2026. Can't wait to do all the
-            ferferi!
-          </p>
-        </div>
-
-        <div class="slide">
-          <img
-            src="images/dairy_milk_heart_blush.jpg"
-            alt="Cadbury Heart Blush"
-            class="chocolate-img"
-          />
-          <h2 style="color: var(--cadbury-purple)">The Sweet Treat!</h2>
-          <p>
-            Virtual Dairy Milk for your post-exam cravings. The real one is
-            waiting for you later! 😈
-          </p>
-        </div>
-
-        <div class="slide">
-          <div class="photo-frame">
-            <img
-              src="images/rose_day_photo.jpg"
-              alt="Our Outing"
-              class="collage-img"
-            />
-          </div>
-          <h2>Our Rose Day</h2>
-        </div>
-
-        <div class="nav-buttons">
-          <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
-          <div class="dots-container">
-            <div class="dot active-dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <button id="nextBtn" onclick="changeSlide(1)">Next</button>
-        </div>
-
-        <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+      <div class="slide active">
+        <span class="icon wobble">🌹</span>
+        <h2>Happy Rose Day</h2>
+        <p>
+          Very Good Morning Madam! Here is a digital rose to start your day with
+          a smile.
+        </p>
       </div>
+
+      <div class="slide">
+        <span class="icon pulse">🤞🏼</span>
+        <h2>Exam Mode: GATE</h2>
+        <p>
+          Chaap nis na! Remember the pattern and fadaya dis! I know you will do
+          your best.
+        </p>
+      </div>
+
+      <div class="slide">
+        <span class="icon float">☕</span>
+        <h2>Post-Exam</h2>
+        <p>
+          Countdown to our first meet of 2026. Can't wait to do all the ferferi!
+        </p>
+      </div>
+
+      <div class="slide">
+        <img
+          src="images/dairy_milk_heart_blush.jpg"
+          alt="Cadbury Heart Blush"
+          class="chocolate-img"
+        />
+        <h2 style="color: var(--cadbury-purple)">The Sweet Treat!</h2>
+        <p>
+          Virtual Dairy Milk for your post-exam cravings. The real one is
+          waiting for you later! 😈
+        </p>
+      </div>
+
+      <div class="slide">
+        <div class="photo-frame">
+          <img
+            src="images/rose_day_photo.jpg"
+            alt="Our Outing"
+            class="collage-img"
+          />
+        </div>
+        <h2>Our Rose Day</h2>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
+        <div class="dots-container">
+          <div class="dot active-dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+      </div>
+
+      <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+    </div>
+    <div class="signature-wrap">
       <div class="signature-text footer-text">...to his madam</div>
     </div>
     <script>
@@ -130,9 +131,9 @@
         prevBtn.disabled = currentSlide === 0;
 
         if (currentSlide === 2) {
-          nextBtn.innerText = "See you soon! ❤️";
+          nextBtn.innerText = "See you! ❤️";
         } else if (currentSlide === 3) {
-          nextBtn.innerText = "View Gallery 📸";
+          nextBtn.innerText = "Gallery 📸";
         } else if (currentSlide === 4) {
           nextBtn.innerText = "Start Over ✨";
         } else {

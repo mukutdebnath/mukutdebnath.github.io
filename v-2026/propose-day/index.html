@@ -9,80 +9,80 @@
   <body class="theme-propose">
     <div class="signature-wrap">
       <div class="signature-text header-text">from dumbo...</div>
-      <div class="carousel-container">
-        <div class="date-header">FEBRUARY 08, 2026</div>
-        <hr />
+    </div>
+    <div class="carousel-container">
+      <div class="date-header">FEBRUARY 08, 2026</div>
+      <hr />
 
-        <div class="slide active">
-          <span class="icon float">💍</span>
-          <h2>Will you be my Valentine?</h2>
-          <p>I promise to keep you laughing & annoyed!</p>
+      <div class="slide active">
+        <span class="icon float">💍</span>
+        <h2>Will you be my Valentine?</h2>
+        <p>I promise to keep you laughing & annoyed!</p>
 
-          <div class="proposal-buttons">
-            <button id="yesBtn" onclick="celebrate()">Yes</button>
-            <button id="noBtn" onclick="handleNo()">No</button>
-          </div>
+        <div class="proposal-buttons">
+          <button id="yesBtn" onclick="celebrate()">Yes</button>
+          <button id="noBtn" onclick="handleNo()">No</button>
         </div>
-
-        <a href="../index.html" class="back-link"
-          >🏠 Valentine's Week</a
-        >
       </div>
+
+      <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+    </div>
+    <div class="signature-wrap">
       <div class="signature-text footer-text">...to his madam</div>
     </div>
     <script>
-        let noCount = 0;
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
+      let noCount = 0;
+      const yesBtn = document.getElementById("yesBtn");
+      const noBtn = document.getElementById("noBtn");
 
-        const messages = [
-            "Really? 🤔",
-            "Ki Nisthur! 👿",
-            "Moner dorja bondho! 😈",
-            "Not allowed! 🚫",
-            "No nai aar!!! 😂"
-        ];
+      const messages = [
+        "Really? 🤔",
+        "Ki Nisthur! 👿",
+        "Moner dorja bondho! 😈",
+        "Not allowed! 🚫",
+        "No nai aar!!! 😂",
+      ];
 
-        function handleNo() {
-            noCount++;
-            
-            // 1. Show Popup
-            showPopup(messages[noCount-1] || "Access Denied! 🔒");
+      function handleNo() {
+        noCount++;
 
-            // 2. Make Yes Button Bigger
-            let currentSize = 1 + (noCount * 0.4);
-            yesBtn.style.transform = `scale(${currentSize})`;
+        // 1. Show Popup
+        showPopup(messages[noCount - 1] || "Access Denied! 🔒");
 
-            // 3. Move No Button randomly
-            const x = Math.random() * 150 - 75; // Random move left/right
-            const y = Math.random() * 100 - 50; // Random move up/down
-            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        // 2. Make Yes Button Bigger
+        let currentSize = 1 + noCount * 0.4;
+        yesBtn.style.transform = `scale(${currentSize})`;
 
-            // 4. Vanish No Button after 5 clicks
-            if (noCount >= 5) {
-                noBtn.style.display = 'none';
-            }
+        // 3. Move No Button randomly
+        const x = Math.random() * 150 - 75; // Random move left/right
+        const y = Math.random() * 100 - 50; // Random move up/down
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+        // 4. Vanish No Button after 5 clicks
+        if (noCount >= 5) {
+          noBtn.style.display = "none";
         }
+      }
 
-        function showPopup(text) {
-            const alert = document.createElement('div');
-            alert.className = 'custom-alert';
-            alert.innerText = text;
-            document.body.appendChild(alert);
-            
-            setTimeout(() => {
-                alert.remove();
-            }, 2000);
-        }
+      function showPopup(text) {
+        const alert = document.createElement("div");
+        alert.className = "custom-alert";
+        alert.innerText = text;
+        document.body.appendChild(alert);
 
-        function celebrate() {
-            // Change theme to Rose (Red) for the success celebration!
-            document.body.className = 'theme-rose';
-            
-            const container = document.querySelector('.carousel-container');
-            
-            // Update the container with the success message and two buttons
-            container.innerHTML = `
+        setTimeout(() => {
+          alert.remove();
+        }, 2000);
+      }
+
+      function celebrate() {
+        // Change theme to Rose (Red) for the success celebration!
+        document.body.className = "theme-rose";
+
+        const container = document.querySelector(".carousel-container");
+
+        // Update the container with the success message and two buttons
+        container.innerHTML = `
                 <div class="date-header">FEBRUARY 08, 2026</div>
                 <hr>
                 <span class="icon pulse">💖</span>
@@ -94,7 +94,7 @@
                     <a href="../index.html" class="back-link">🏠 Back to Valentine's Week</a>
                 </div>
             `;
-        }
+      }
     </script>
   </body>
 </html>
