@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Coming Soon - Chocolate Day</title>
+    <title>Chocolate Day</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body class="theme-chocolate">
@@ -19,13 +19,76 @@
       <hr />
 
       <div class="slide active">
-        <span class="icon float">🍫</span>
-        <h2>Coming Soon!</h2>
+        <span class="icon wobble">🍫</span>
+        <h2>Pick Your Treat</h2>
         <p>
-          Something sweet is being prepared for you. Check back on February 9th!
+          Choose the chocolate you want for our next meet. Think carefully,
+          Madam! You only have one coupon! 😈
         </p>
+      </div>
 
-        <div class="loading-dots"><span></span><span></span><span></span></div>
+      <div class="slide">
+        <h3>Select your favourite chocolate:</h3>
+        <div class="choc-grid">
+          <div class="choc-card" onclick="selectChoc('Amul Milk Chocolate', this)">
+            <span><img src="images/amul.webp" alt="Us" style="width: 75%" /></span>
+          </div>
+          <div class="choc-card" onclick="selectChoc('Dairy Milk Silk Oreo', this)">
+            <span><img src="images/silkoreo.jpeg" alt="Us" style="width: 75%" /></span>
+          </div>
+          <div class="choc-card" onclick="selectChoc('Nestle Classic', this)">
+            <span><img src="images/nestle.jpeg" alt="Us" style="width: 75%" /></span>
+          </div>
+          <div class="choc-card" onclick="selectChoc('KitKat', this)">
+            <span><img src="images/kitkat.webp" alt="Us" style="width: 75%" /></span>
+          </div>
+        </div>
+        <p
+          id="selection-msg"
+          style="
+            font-size: 0.85rem;
+            color: var(--chocolate-brown);
+            font-weight: bold;
+          "
+        ></p>
+      </div>
+
+      <div class="slide">
+        <div class="personal-photo-container">
+          <img src="images/cd_silk.PORTRAIT.jpg" alt="Us" style="width: 75%" />          
+        </div>
+        <div class="photo-caption">Did you already forget it? 🤔</div>
+      </div>
+
+      <div class="slide">
+        <span class="icon pulse">✅</span>
+        <h2>Order Confirmed!</h2>
+        <div class="receipt">
+          <p style="margin: 5px 0">ITEM: <span id="final-choc">None</span></p>
+          <p style="margin: 5px 0">PRICE: ₹0 (Paid with Love)</p>
+          <p style="margin: 5px 0">DELIVERY DATE: Next Meetup</p>
+        </div>
+        <p>I’ve noted it down! Get ready for the sugar rush.</p>
+      </div>
+
+      <div
+        class="nav-buttons"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          margin-top: 25px;
+        "
+      >
+        <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
+        <div class="dots-container">
+          <div class="dot active-dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
       </div>
 
       <a href="../index.html" class="back-link" style="margin-top: 20px"
@@ -36,5 +99,55 @@
     <div class="signature-wrap">
       <div class="signature-text footer-text">...to his madam</div>
     </div>
+
+    <script>
+      let currentSlide = 0;
+      let selectedChocolate = "";
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
+
+      function selectChoc(name, element) {
+        // Update variable
+        selectedChocolate = name;
+
+        // UI Feedback
+        document
+          .querySelectorAll(".choc-card")
+          .forEach((card) => card.classList.remove("selected"));
+        element.classList.add("selected");
+        document.getElementById("selection-msg").innerText =
+          "Selected: " + name + "!";
+        document.getElementById("final-choc").innerText = name;
+      }
+
+      function changeSlide(direction) {
+        // Validation: Don't let her go past Slide 2 without picking
+        if (currentSlide === 1 && direction === 1 && selectedChocolate === "") {
+          alert("Please select a chocolate first! 🍫");
+          return;
+        }
+
+        slides[currentSlide].classList.remove("active");
+        dots[currentSlide].classList.remove("active-dot");
+
+        currentSlide += direction;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active-dot");
+
+        prevBtn.disabled = currentSlide === 0;
+
+        if (currentSlide === slides.length - 1) {
+          nextBtn.innerText = "Start Over ✨";
+        } else {
+          nextBtn.style.visibility = "visible";
+          nextBtn.innerText = currentSlide === 1 ? "Checkout 🛒" : "Next";
+        }
+      }
+    </script>
   </body>
 </html>
