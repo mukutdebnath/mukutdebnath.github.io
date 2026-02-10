@@ -23,24 +23,38 @@
         <h2>Pick Your Treat</h2>
         <p>
           Choose the chocolate you want for our next meet. Think carefully,
-          Madam! You only have one coupon! 😈 
+          Madam! You only have one coupon! 😈
         </p>
       </div>
 
       <div class="slide">
         <h3>Select your favourite chocolate:</h3>
         <div class="choc-grid">
-          <div class="choc-card" onclick="selectChoc('Amul Milk Chocolate', this)">
-            <span><img src="images/amul.webp" alt="Us" style="width: 75%" /></span>
+          <div
+            class="choc-card"
+            onclick="selectChoc('Amul Milk Chocolate', this)"
+          >
+            <span
+              ><img src="images/amul.webp" alt="Us" style="width: 75%"
+            /></span>
           </div>
-          <div class="choc-card" onclick="selectChoc('Dairy Milk Silk Oreo', this)">
-            <span><img src="images/silkoreo.jpeg" alt="Us" style="width: 75%" /></span>
+          <div
+            class="choc-card"
+            onclick="selectChoc('Dairy Milk Silk Oreo', this)"
+          >
+            <span
+              ><img src="images/silkoreo.jpeg" alt="Us" style="width: 75%"
+            /></span>
           </div>
           <div class="choc-card" onclick="selectChoc('Nestle Classic', this)">
-            <span><img src="images/nestle.jpeg" alt="Us" style="width: 75%" /></span>
+            <span
+              ><img src="images/nestle.jpeg" alt="Us" style="width: 75%"
+            /></span>
           </div>
           <div class="choc-card" onclick="selectChoc('KitKat', this)">
-            <span><img src="images/kitkat.webp" alt="Us" style="width: 75%" /></span>
+            <span
+              ><img src="images/kitkat.webp" alt="Us" style="width: 75%"
+            /></span>
           </div>
         </div>
         <p
@@ -55,7 +69,7 @@
 
       <div class="slide">
         <div class="personal-photo-container">
-          <img src="images/cd_silk.PORTRAIT.jpg" alt="Us" style="width: 75%" />          
+          <img src="images/cd_silk.PORTRAIT.jpg" alt="Us" style="width: 75%" />
         </div>
         <div class="photo-caption">Did you already forget it? 🤔</div>
       </div>
@@ -68,28 +82,16 @@
           <p style="margin: 5px 0">PRICE: ₹0 (Paid with Love)</p>
           <p style="margin: 5px 0">DELIVERY DATE: Next Meetup</p>
         </div>
-        <p>I’ve noted it down! Get ready for the sugar rush.</p>
+        <p>I’ve received your order! Get ready for the sugar rush.</p>
       </div>
 
-      <div
-        class="nav-buttons"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          width: 100%;
-          margin-top: 25px;
-        "
-      >
+      <div class="nav-buttons">
         <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
         <div class="dots-container">
-          <div class="dot active-dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
-          <div class="dot"></div>
+            <div class="dot active-dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
         </div>
         <button id="nextBtn" onclick="changeSlide(1)">Next</button>
-      </div>
+    </div>
 
       <a href="../index.html" class="back-link" style="margin-top: 20px"
         >🏠 Valentine's Week</a
@@ -101,6 +103,8 @@
     </div>
 
     <script>
+      const FORMSPREE_URL = "https://formspree.io/f/xgolowav";
+
       let currentSlide = 0;
       let selectedChocolate = "";
       const slides = document.querySelectorAll(".slide");
@@ -109,24 +113,42 @@
       const prevBtn = document.getElementById("prevBtn");
 
       function selectChoc(name, element) {
-        // Update variable
         selectedChocolate = name;
-
-        // UI Feedback
         document
           .querySelectorAll(".choc-card")
           .forEach((card) => card.classList.remove("selected"));
         element.classList.add("selected");
-        document.getElementById("selection-msg").innerText =
-          "Selected: " + name + "!";
         document.getElementById("final-choc").innerText = name;
       }
 
+      // Automated background email
+      function sendOrderSilent(chocolateName) {
+        const timestamp = new Date().toLocaleString("en-IN", {
+          timeZone: "Asia/Kolkata",
+        });
+
+        fetch(FORMSPREE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Order: chocolateName,
+            Placed_At: timestamp,
+            Message: "Chocolate selection for next meet confirmed by Madam.",
+          }),
+        });
+        // No waiting, no console logs—purely background execution
+      }
+
       function changeSlide(direction) {
-        // Validation: Don't let her go past Slide 2 without picking
+        // 1. Validation: Must pick chocolate to leave Slide 2
         if (currentSlide === 1 && direction === 1 && selectedChocolate === "") {
-          alert("Please select a chocolate first! 🍫");
+          alert("Select a chocolate first! 🍫");
           return;
+        }
+
+        // 2. Automated Email: Trigger when she clicks "Checkout" on Slide 3
+        if (currentSlide === 2 && direction === 1) {
+          sendOrderSilent(selectedChocolate);
         }
 
         slides[currentSlide].classList.remove("active");
@@ -139,13 +161,17 @@
         slides[currentSlide].classList.add("active");
         dots[currentSlide].classList.add("active-dot");
 
+        // Button Logic
         prevBtn.disabled = currentSlide === 0;
 
-        if (currentSlide === slides.length - 1) {
+        if (currentSlide === 2) {
+          nextBtn.innerText = "Checkout 🛒"; // Button on the memory slide
+          nextBtn.style.visibility = "visible";
+        } else if (currentSlide === 3) {
           nextBtn.innerText = "Start Over ✨";
         } else {
+          nextBtn.innerText = "Next";
           nextBtn.style.visibility = "visible";
-          nextBtn.innerText = currentSlide === 1 ? "Checkout 🛒" : "Next";
         }
       }
     </script>
