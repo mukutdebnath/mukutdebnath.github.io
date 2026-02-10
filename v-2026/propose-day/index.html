@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -43,11 +43,35 @@
         "No nai aar!!! 😂",
       ];
 
+      const noMessages = [
+        "Kotto boro sahosh! 🧐",
+        "Moner Dorja Bondho! 😈",
+        "Ki Nisthur! 👿",
+        "Seriously, No? 😤",
+        "Arrey Ki Mushkil! 😡",
+        "Abar Bhab! 😏",
+        "Thik Kore Bhab! 😬",
+        "Eishob Cholbe Na! 😈",
+        "Khela Theke Bhagon? 👿",
+        "No Mantam Na! 😠",
+      ];
+
+      let currentDeck = [...noMessages];
+
       function handleNo() {
         noCount++;
 
+        if (currentDeck.length === 0) {
+          currentDeck = [...noMessages];
+        }
+
+        // Pick a random index from the CURRENT deck
+        const randomIndex = Math.floor(Math.random() * currentDeck.length);
+
+        // Remove the message from the deck so it can't be picked again
+        const selectedMessage = currentDeck.splice(randomIndex, 1)[0];
         // 1. Show Popup
-        showPopup(messages[noCount - 1] || "Access Denied! 🔒");
+        showPopup(selectedMessage || "Access Denied! 🔒");
 
         // 2. Make Yes Button Bigger
         let currentSize = 1 + noCount * 0.4;
