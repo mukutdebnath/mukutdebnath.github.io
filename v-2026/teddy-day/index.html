@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Teddy Day - Bear Vibes</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body class="theme-teddy">
+    <div class="signature-wrap">
+      <div class="signature-text header-text">from dumbo...</div>
+    </div>
+    <div class="carousel-container">
+      <div class="date-header">FEBRUARY 10, 2026</div>
+      <hr />
+
+      <div class="slide active">
+        <img src="images/bears.gif" alt="Bears" style="width: 80%" />
+        <h2>Happy Teddy Day!</h2>
+        <p>
+          Teddy day ke avsar par... GIFs! 😈.<br />Warning! Cute aggression
+          incoming!
+        </p>
+      </div>
+
+      <div class="slide">
+        <div class="mood-grid">
+          <div
+            class="mood-card"
+            onclick="previewMood('Ei nao tight hugs! 🫂', this)"
+          >
+            <img src="images/hug.gif" alt="Hugs" />
+          </div>
+          <div
+            class="mood-card"
+            onclick="previewMood('Tui khaali nisthur hoiti 😤', this)"
+          >
+            <img src="images/nisthur.gif" alt="Cruel" />
+          </div>
+          <div
+            class="mood-card"
+            onclick="previewMood('Sotka-sotki korbe? 🌚', this)"
+          >
+            <img src="images/sotkasotki.gif" alt="Cuddles" />
+          </div>
+          <div
+            class="mood-card"
+            onclick="previewMood('Summa-saati korar iccha! 😘', this)"
+          >
+            <img src="images/summasaati.gif" alt="Kisses" />
+          </div>
+        </div>
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-height: 25px;
+          "
+        >
+          <p
+            id="preview-text"
+            style="
+              font-weight: bold;
+              color: #ff99aa;
+              margin: 0;
+              font-size: 0.9rem;
+            "
+          >
+            What are you feeling? ✨
+          </p>
+          <span
+            onclick="resetBears()"
+            style="
+              cursor: pointer;
+              font-size: 1.2rem;
+              font-weight: bold;
+              filter: grayscale(1);
+            "
+            title="Reset"
+            >⟲</span
+          >
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="images/stitch-love.gif" alt="Stitch" style="width: 75%" />
+        <div class="personal-photo-container">
+          <img
+            src="images/teddy_u.PORTRAIT.jpg"
+            alt="Happy Teddy"
+            style="width: 80%"
+          />
+        </div>
+        <p>
+          Whatever you want, have this cute Stitch! <br>
+          He will do the brown bear's job from my side 😬
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button id="prevBtn" onclick="changeSlide(-1)" disabled>Back</button>
+        <div class="dots-container">
+          <div class="dot active-dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <button id="nextBtn" onclick="changeSlide(1)">Next</button>
+      </div>
+      <a href="../index.html" class="back-link" style="margin-top: 20px"
+        >🏠 Valentine's Week</a
+      >
+    </div>
+
+    <div class="signature-wrap">
+      <div class="signature-text footer-text">...to his madam</div>
+    </div>
+
+    <script>
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
+      const dots = document.querySelectorAll(".dot");
+      const nextBtn = document.getElementById("nextBtn");
+      const prevBtn = document.getElementById("prevBtn");
+
+      // Just for visual fun, doesn't block progress
+      function previewMood(name, element) {
+        document
+          .querySelectorAll(".mood-card")
+          .forEach((c) => c.classList.remove("selected"));
+        element.classList.add("selected");
+        document.getElementById("preview-text").innerText = name;
+      }
+
+      function resetBears() {
+        // 1. Remove the 'selected' class from all cards
+        document
+          .querySelectorAll(".mood-card")
+          .forEach((c) => c.classList.remove("selected"));
+
+        // 2. Reset the text back to initial state
+        const statusText = document.getElementById("preview-text");
+        statusText.innerText = "What are you feeling? ✨";
+        statusText.style.color = "#ff99aa"; // Ensure color is back to default
+      }
+
+      function changeSlide(direction) {
+        // NO VALIDATION HERE - She can click Next anytime
+
+        slides[currentSlide].classList.remove("active");
+        dots[currentSlide].classList.remove("active-dot");
+
+        currentSlide += direction;
+        if (currentSlide >= slides.length) currentSlide = 0;
+        if (currentSlide < 0) currentSlide = slides.length - 1;
+
+        slides[currentSlide].classList.add("active");
+        dots[currentSlide].classList.add("active-dot");
+
+        // Button visibility/text
+        prevBtn.disabled = currentSlide === 0;
+
+        if (currentSlide === 2) {
+          nextBtn.innerText = "Start Over ✨";
+        } else {
+          nextBtn.style.visibility = "visible";
+          nextBtn.innerText = "Next";
+        }
+      }
+    </script>
+  </body>
+</html>
