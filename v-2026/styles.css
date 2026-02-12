@@ -514,6 +514,7 @@ button:disabled {
 .mood-card {
   background: white;
   border-radius: 15px;
+  align-items: center;
   padding: 10px;
   border: 2px solid transparent;
   cursor: pointer;
