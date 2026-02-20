@@ -850,6 +850,15 @@ button:disabled {
   filter: invert(36%) sepia(91%) saturate(3025%) hue-rotate(198deg) brightness(101%) contrast(105%);
 } */
 
+.icon-teal {
+  filter: invert(26%) sepia(38%) saturate(1215%) hue-rotate(159deg) brightness(97%) contrast(92%);
+}
+
+/* For the Cream look */
+.icon-cream {
+  filter: invert(93%) sepia(16%) saturate(601%) hue-rotate(318deg) brightness(101%) contrast(91%);
+}
+
 @keyframes shake {
 
   0%,
