@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Promise Day</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -16,99 +17,122 @@
     <div class="signature-text header-text">from dumbo...</div>
   </div>
 
-  <div class="carousel-container">
+  <div class="carousel-container promise-chat-layout">
     <div class="date-header-promise-day">
       <div class="header-left">
-        <a href="javascript:void(0)" id="headerPrevBtn" onclick="changeSlide(-1)" class="nav-link disabled"><img
-            src="images/back.png" alt="Back" class="header-icon-img"></a>
+        <!-- <a href="../index.html" class="nav-link">
+          <img src="images/back.png" alt="Back" class="header-icon-img">
+        </a> -->
       </div>
-      <div class="header-center">
-        <strong>Promises</strong>
-      </div>
-      <div class="header-right">
-        <a href="javascript:void(0)" id="headerNextBtn" onclick="changeSlide(1)" class="nav-link"><img
-            src="images/next.png" alt="Next" class="header-icon-img"></a>
-      </div>
+      <div class="header-center"><strong>Promises</strong></div>
+      <div class="header-right"></div>
     </div>
 
+    <div id="chat-feed" class="chat-scroll-wrapper">
 
-    <div class="slide active">
-      <div class="chat-wallpaper profile-start">
-
+      <div class="profile-start" data-aos="fade-down" data-aos-anchor="#chat-feed">
         <div class="profile-container">
-          <div class="main-avatar">
-            <img src="images/us.SELFIE.jpg" alt="Us">
-          </div>
-
+          <div class="main-avatar"><img src="images/us.SELFIE.jpg" alt="Us"></div>
           <div class="profile-info">
             <h2 class="profile-header">Happy Promise Day!</h2>
-            <p class="profile-subheading">
-              We created this promise thread on 11 February, 2026
-            </p>
+            <p class="profile-subheading">We have created this promise space on 11 February, 2026.</p>
+            <p class="profile-subheading">Scroll down slowly to go again through each one of them. Feel free to send a
+              new message or promise here.</p>
           </div>
         </div>
-
       </div>
-    </div>
 
-    <!-- Thread 1 -->
-    <div class="slide">
-      <div class="chat-wallpaper">
-        <div class="chat-row row-her ani-1">
-          <div class="bubble bubble-her">I promise to annoy you and to be nisthur for eternity.</div>
-          <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
-        </div>
-        <div class="seen-status ani-2">Seen 11:11 PM, 11 Feb 2026</div>
-        <div class="chat-row row-me ani-3">
-          <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
-          <div class="bubble bubble-me">And I promise to always get happily annoyed in return.</div>
-        </div>
-      </div>
-    </div>
+      <div class="time-status" data-aos="fade-in">11 Feb, 11:11 PM</div>
 
-    <!-- Thread 2 -->
-    <div class="slide">
-      <div class="chat-wallpaper">
-        <div class="chat-row row-me ani-1">
-          <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
-          <div class="bubble bubble-me">I promise to surprise you and make you smile with amazing stuffs like this.</div>
-        </div>
-        <div class="chat-row row-her ani-2">
-          <div class="bubble bubble-her">●●●</div>
-          <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
-        </div>
-        <!-- <div class="seen-status ani-3">Seen 11:11 PM</div> -->
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her-top">Really excited to scroll down on this website and in life with you! ❤️</div>
+        <div class="avatar"></div>
       </div>
-    </div>
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her-bottom">Ajke ki day?</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"></div>
+        <div class="bubble bubble-me-top">Oh</div>
+      </div>
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"></div>
+        <div class="bubble bubble-me-middle">Promise day</div>
+      </div>
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me-bottom">Kor promise...</div>
+      </div>
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">I promise to annoy you and to be nisthur for eternity. 😈</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
 
-    <!-- Thread 3 -->
-    <div class="slide">
-      <div class="chat-wallpaper">
-        <div class="chat-row row-her ani-1">
-          <div class="bubble bubble-her">I promise to be treated as the best girlfriend and give you as many 8 minutes you need.</div>
-          <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
-        </div>
-        <div class="seen-status ani-2">Seen 11:11 PM, 11 Feb 2026</div>
-        <div class="chat-row row-me ani-3">
-          <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
-          <div class="bubble bubble-me">I promise to treat you likewise and always accept all your 8 minute invites.</div>
-        </div>
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me">And I promise to always get happily annoyed and never get angry on your
+          nisthurota. 🫠</div>
       </div>
-    </div>
 
-    <!-- Thread 4 -->
-    <div class="slide">
-      <div class="chat-wallpaper">
-        <div class="chat-row row-me ani-1">
-          <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
-          <div class="bubble bubble-me">I promise to always get fully involved in all your stories and ask the dumbest follow-up questions for you to explain again and again.</div>
-        </div>
-        <div class="chat-row row-her ani-2">
-          <div class="bubble bubble-her">●●●</div>
-          <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
-        </div>
-        <!-- <div class="seen-status ani-3">Seen 11:11 PM</div> -->
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">I promise to be treated as the best girlfriend and give you as many 8 minutes you
+          need. 😁</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
       </div>
+
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me">I promise to always treat you as the best girlfriend and accept all of your 8
+          minute invites. 😘</div>
+      </div>
+
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">I also promise to treat you as the best boyfriend ever. 🫦</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
+
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me">I promise to keep you surprised and make you smile with amazing stuffs like this
+          one. ✨</div>
+      </div>
+
+      <div class="time-status" data-aos="fade-in">211 Feb, 8:25 AM</div>
+
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">You have been the biggest surprise that I've received in 2026! And I would
+          loveeee to receive more surprises no matter in what form they come because these will be from you and you're
+          an exception 😘. Lastly, about making me smile? I don't think a surprise is needed to do that....Every night
+          as soon as I receive the video call, my lips automatically curves into a smile 😘</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
+
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me">I promise to always get fully involved in all of your stories and ask the dumbest
+          possible follow-up questions for you to explain again and again... 🥰</div>
+      </div>
+
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">For this I don't really have to promise because as soon as something happens with
+          me, my first thought is "oh I've to tell Mukut about it". Well, about answering those dumb questions....umm...
+          I can't promise that I won't get mad at you but I promise to explain till you understand. 🫶🏻</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
+
+      <div class="chat-row row-me" data-aos="fade-right" data-aos-anchor="#chat-feed">
+        <div class="avatar"><img src="images/md.PORTRAIT.jpg"></div>
+        <div class="bubble bubble-me">Well... in that case, I promise to never stop asking the dumb questions. 😤</div>
+      </div>
+
+      <div class="chat-row row-her" data-aos="fade-left" data-aos-anchor="#chat-feed">
+        <div class="bubble bubble-her">I loved the 11:11 time detail 😭</div>
+        <div class="avatar"><img src="images/cd.PORTRAIT.jpg"></div>
+      </div>
+      <div class="seen-status" data-aos="fade-in">Seen 21 Feb, 11:11 PM</div>
+
+      <!-- <div class="bottom-chat-padding"></div> -->
     </div>
 
     <form id="promiseForm" action="https://formspree.io/f/xgolowav" method="POST" class="chat-footer-nav">
@@ -116,9 +140,7 @@
         <a href="../index.html" class="inner-icon-btn icon-teal">
           <img src="images/home.png" alt="Home">
         </a>
-
         <input type="text" name="message" id="userMessageInput" placeholder="Message..." autocomplete="off">
-
         <a href="javascript:void(0)" class="inner-icon-btn icon-teal" onclick="handleSendMessage()">
           <img src="images/send.png" alt="Send">
         </a>
@@ -129,46 +151,9 @@
     <div class="signature-text footer-text">...to his madam</div>
   </div>
 
-
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
   <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const nextBtn = document.getElementById('nextBtn');
-    const prevBtn = document.getElementById('prevBtn');
-
-    function changeSlide(direction) {
-      slides[currentSlide].classList.remove('active');
-      currentSlide += direction;
-
-      // if (currentSlide >= slides.length) {
-      //   window.location.href = '../index.html'; // Go home if "Next" is hit on last slide
-      //   return;
-      // }
-      if (currentSlide < 0) currentSlide = 0;
-
-      slides[currentSlide].classList.add('active');
-
-      // Update Header Links
-      const hPrev = document.getElementById('headerPrevBtn');
-      const hNext = document.getElementById('headerNextBtn');
-
-      // Disable "Next" button on the last slide
-      if (currentSlide === 4) {
-        hNext.classList.add('disabled');
-      } else {
-        hNext.classList.remove('disabled');
-      }
-      // Disable "Back" if on the first slide
-      if (currentSlide === 0) {
-        hPrev.classList.add('disabled');
-      } else {
-        hPrev.classList.remove('disabled');
-      }
-
-      // Change "Next" text to "Finish" or similar on the last slide if you want
-      // hNext.querySelector('span').innerText = (currentSlide === slides.length - 1) ? "Finish" : "Next ›";
-    }
-
     async function handleSendMessage() {
       // Select the wrapper instead of the container
       const inputWrapper = document.querySelector('.message-input-wrapper');
@@ -216,6 +201,41 @@
         e.preventDefault(); // Prevents page reload
         handleSendMessage();
       }
+    });
+
+    AOS.init({
+      duration: 800,
+      once: false,    // Changed from true to false
+      mirror: true,
+      offset: 1250,           // Trigger exactly when it hits the line
+      anchorPlacement: 'top-bottom', // Trigger when the top of the bubble hits the bottom of the feed
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const chatFeed = document.getElementById('chat-feed');
+      const bubbles = document.querySelectorAll('[data-aos]');
+
+      // Intersection Observer looks at the #chat-feed as the 'viewport'
+      const observerOptions = {
+        root: chatFeed,        // This tells it to check visibility INSIDE your 50vh box
+        threshold: 0.4,        // Trigger when 10% of the bubble is visible
+        rootMargin: "-5% 0px -5% 0px" // Slight offset for better feel
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Add the AOS animation class manually when it enters the box
+            entry.target.classList.add('aos-animate');
+            // Once animated, we stop observing this bubble
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      bubbles.forEach(bubble => {
+        observer.observe(bubble);
+      });
     });
   </script>
 </body>

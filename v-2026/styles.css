@@ -599,10 +599,10 @@ button:disabled {
 /* Modern Chat Font */
 .bubble {
   font-family: sans-serif;
-  max-width: 55%;
+  max-width: 67%;
   padding: 12px 16px;
   font-size: 0.9rem;
-  line-height: 1.4;
+  line-height: 1.35;
   word-wrap: break-word;
 }
 
@@ -693,12 +693,33 @@ button:disabled {
   text-align: left;
 }
 
+.row-me + .row-me {
+  margin-top: -10px !important; /* Adjust this value to match your gap size */
+}
+
 .bubble-me {
   background: #1d5573;
   color: white;
   border-radius: 20px 20px 20px 20px;
-  /* border-radius: 20px 20px 20px 4px; */
-  /* Sharp bottom-left */
+}
+
+
+.bubble-me-top {
+  background: #1d5573;
+  color: white;
+  border-radius: 20px 20px 20px 4px;
+}
+
+.bubble-me-middle {
+  background: #1d5573;
+  color: white;
+  border-radius: 4px 20px 20px 4px;
+}
+
+.bubble-me-bottom {
+  background: #1d5573;
+  color: white;
+  border-radius: 4px 20px 20px 20px;
 }
 
 .row-her {
@@ -706,18 +727,38 @@ button:disabled {
   text-align: left;
 }
 
+.row-her + .row-her {
+  margin-top: -10px !important; /* Adjust this value to match your gap size */
+}
+
 .bubble-her {
   background: #f2e0cd;
   color: black;
   border-radius: 20px 20px 20px 20px;
-  /* border-radius: 20px 20px 4px 20px; */
-  /* Sharp bottom-right */
+}
+
+.bubble-her-top {
+  background: #f2e0cd;
+  color: black;
+  border-radius: 20px 20px 4px 20px;
+}
+
+.bubble-her-middle {
+  background: #f2e0cd;
+  color: black;
+  border-radius: 20px 4px 4px 20px;
+}
+
+.bubble-her-bottom {
+  background: #f2e0cd;
+  color: black;
+  border-radius: 20px 4px 20px 20px;
 }
 
 /* Avatar placeholder */
 .avatar {
-  width: 35px;
-  height: 35px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
   overflow: hidden;
   /* This crops the image to the circle */
@@ -725,7 +766,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: #eee;
+  background: white;
   /* Fallback color */
 }
 
@@ -761,6 +802,28 @@ button:disabled {
   margin-top: -5px;
   /* Pull it closer to the last bubble */
   padding-right: 40px;
+  /* Align it with the end of the text, not the avatar */
+  opacity: 0;
+  font-family: sans-serif;
+}
+
+.seen-status {
+  font-size: 0.7rem;
+  color: #999;
+  text-align: right;
+  margin-top: -5px;
+  /* Pull it closer to the last bubble */
+  padding-right: 40px;
+  /* Align it with the end of the text, not the avatar */
+  opacity: 0;
+  font-family: sans-serif;
+}
+
+.time-status {
+  font-size: 0.7rem;
+  color: #999;
+  text-align: center;
+  /* Pull it closer to the last bubble */
   /* Align it with the end of the text, not the avatar */
   opacity: 0;
   font-family: sans-serif;
@@ -882,6 +945,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   background: none;
+  padding: 15px 0 15px 0;
   /* Removes any extra background colors */
 }
 
@@ -891,12 +955,12 @@ button:disabled {
 
 /* Smaller, simple circular DP */
 .main-avatar {
-  width: 110px;
-  height: 110px;
+  width: 125px;
+  height: 125px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 20px auto;
-  border: 1px solid #dbdbdb;
+  margin: 20px auto 20px auto;
+  border: 3px solid #f2e0cd;
   /* Subtle border like a real DP */
 }
 
@@ -911,7 +975,7 @@ button:disabled {
   font-family: sans-serif;
   font-size: 1.4rem;
   color: #000;
-  margin: 5px 0 15px 0;
+  margin: 25px 0 25px 0;
   font-weight: bold;
 }
 
@@ -920,7 +984,7 @@ button:disabled {
   font-size: 0.9rem;
   color: #000;
   /* Changed to black as requested */
-  margin: 0;
+  margin: 15px;
   font-weight: normal;
   /* Removed extra bolding */
 }
@@ -992,4 +1056,47 @@ button:disabled {
   80% {
     transform: translateX(4px);
   }
+}
+
+
+
+/* NEW: Dedicated Layout for Promise Day */
+.promise-chat-layout {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 50vh !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* The scrollable feed */
+.chat-scroll-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('images/chat-wallpaper.jpg'); */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Ensure messages are visible if AOS hasn't loaded yet */
+/* Ensure bubbles start invisible so they can 'fade in' when triggered */
+[data-aos] {
+  opacity: 0;
+  transition-property: transform, opacity;
+}
+
+/* Once the script adds .aos-animate, they become visible */
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: translate(0) !important;
+}
+
+.bottom-chat-padding {
+  min-height: 40px;
 }
