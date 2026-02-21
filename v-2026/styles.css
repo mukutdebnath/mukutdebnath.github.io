@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 75vh;
+  min-height: 100dvh;
   transition: background-color 0.8s ease;
   color: var(--text-main);
 }
@@ -58,6 +58,23 @@ h1 {
   border: 2px solid transparent;
   position: relative;
   transition: border-color 0.5s ease;
+}
+
+.carousel-container-promise {
+  width: 80%;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 30px;
+  border-radius: 30px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+  transition: border-color 0.5s ease;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 500px !important;
+  overflow: hidden !important;
 }
 
 .signature-wrap {
@@ -166,7 +183,7 @@ body.theme-promise {
 }
 
 body.theme-promise .container,
-body.theme-promise .carousel-container {
+body.theme-promise .carousel-container-promise {
   border-color: var(--promise-green);
 }
 
