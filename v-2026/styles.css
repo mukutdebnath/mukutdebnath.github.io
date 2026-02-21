@@ -28,7 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 75vh;
   transition: background-color 0.8s ease;
   color: var(--text-main);
 }
@@ -1064,7 +1064,7 @@ button:disabled {
 .promise-chat-layout {
   display: flex !important;
   flex-direction: column !important;
-  height: 50vh !important;
+  height: 500px !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
