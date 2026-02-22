@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hug Day - Our Hug Map</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playpen+Sans+Thai:wght@100..800&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="theme-hug">
+    <div class="signature-wrap">
+        <div class="signature-text header-text">from dumbo...</div>
+    </div>
+
+    <div class="carousel-container">
+        <div class="date-header">FEBRUARY 09, 2026</div>
+        <hr />
+        <header class="header" data-aos="fade-down">
+            <h1 class="main-title">Happy Hug Day!</h1>
+            <p class="subtitle" style="font-family: 'Handlee', cursive">Nothing too fancy just our photo-frame.</p>
+        </header>
+
+        <div class="hug-grid">
+            <div class="polaroid-card" style="--rotation: -2deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug_durga_puja.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">First Hug</p>
+                    <p class="photo-frame-desc">Hehe 😏, remember this picture and our first hug?</p>
+                </div>
+            </div>
+            <div class="polaroid-card" style="--rotation: -2deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug-rose-day.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">First Date</p>
+                    <p class="photo-frame-desc">Our first date at Coffee Tea & Me on Rose Day! 🫠</p>
+                </div>
+            </div>
+            <div class="polaroid-card" style="--rotation: 3deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug_propose_day.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">Mela</p>
+                    <p class="photo-frame-desc">Fun day of the week, remember this shundor selfie? 😊</p>
+                </div>
+            </div>
+            <div class="polaroid-card" style="--rotation: -2deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug_propose_day_2.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">Mela</p>
+                    <p class="photo-frame-desc">Again a picture from mela, remember all the hopping we did for my mom's
+                        earrings? 🙃</p>
+                </div>
+            </div>
+            <div class="polaroid-card" style="--rotation: 3deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug_promise_day.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">Again</p>
+                    <p class="photo-frame-desc">Met again at Coffee Tea & Me, while you came to order your parents'
+                        anniversary cake. 👉🏻👈🏻</p>
+                </div>
+            </div>
+            <div class="polaroid-card" style="--rotation: 3deg;">
+                <div class="pin">📌</div>
+                <div class="photo-placeholder"><img src="images/hug_kiss_day.jpg"></div>
+                <div class="caption">
+                    <p class="photo-frame-title">The Elite</p>
+                    <p class="photo-frame-desc">The final date of the week at The Elite, this day will remain very
+                        special for us. 🌚</p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <a href="../index.html" class="back-link" style="margin-top: 20px">🏠 Valentine's Week</a>
+    </div>
+    <div class="signature-wrap">
+        <div class="signature-text footer-text">...to his madam</div>
+    </div>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 50 });
+
+        document.querySelectorAll('.polaroid-card').forEach(card => {
+            // 1. Random Rotation (-4 to +4 degrees)
+            const randomRot = (Math.random() * 8 - 4).toFixed(2);
+
+            // 2. Random Horizontal Shift (-10px to +10px)
+            const randomX = (Math.random() * 20 - 10).toFixed(0);
+
+            // 3. Random Vertical Shift (-15px to +15px)
+            const randomY = (Math.random() * 30 - 15).toFixed(0);
+
+            // Apply variables to the card
+            card.style.setProperty('--rotation', `${randomRot}deg`);
+            card.style.setProperty('--x-shift', `${randomX}px`);
+            card.style.setProperty('--y-shift', `${randomY}px`);
+
+            // Keep track of the timer for each card
+            let revertTimer;
+
+            card.addEventListener('click', function () {
+                // 1. If another card is zoomed, reset it immediately
+                document.querySelectorAll('.polaroid-card.is-zoomed').forEach(zoomedCard => {
+                    if (zoomedCard !== card) zoomedCard.classList.remove('is-zoomed');
+                });
+
+                // 2. Toggle zoom on the clicked card
+                this.classList.toggle('is-zoomed');
+
+                // 3. If we just zoomed in, set the auto-revert timer
+                clearTimeout(revertTimer); // Reset timer if tapped again
+                if (this.classList.contains('is-zoomed')) {
+                    revertTimer = setTimeout(() => {
+                        this.classList.remove('is-zoomed');
+                    }, 3000); // 3000ms = 3 seconds. Change to 10000 for 10s.
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

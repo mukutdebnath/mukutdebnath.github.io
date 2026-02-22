@@ -191,6 +191,20 @@ body.theme-promise button {
   background: var(--promise-green);
 }
 
+/* Hug */
+body.theme-hug {
+  background-color: #f9eeff;
+}
+
+body.theme-hug .container,
+body.theme-hug .carousel-container {
+  border-color: var(--hug-purple);
+}
+
+body.theme-hug button {
+  background: var(--hug-purple);
+}
+
 /* Hug/Kiss/Vday (Add similar blocks for --hug-purple, --kiss-pink, etc.) */
 
 /* 4. Element Styles */
@@ -1359,4 +1373,91 @@ button:disabled {
 
 .bottom-chat-padding {
   min-height: 40px;
+}
+
+
+
+/* Hug Day */
+
+
+
+/* The Main Grid */
+.hug-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* 3 Columns */
+  gap: 5px;
+  /* Spacing between cards */
+  padding: 5px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* The Polaroid Card */
+.polaroid-card {
+  background: white;
+  padding: 8px 8px 15px 8px;
+  box-shadow: 4px 8px 20px rgba(0, 0, 0, 0.12);
+  position: relative;
+
+  /* Combine rotation and random shifting */
+  transform:
+    rotate(var(--rotation, 0deg)) translate(var(--x-shift, 0px), var(--y-shift, 0px));
+
+  transition: transform 0.4s ease-out;
+  z-index: 1;
+}
+
+/* Add a slight hover effect to make it feel interactive */
+.polaroid-card.is-zoomed {
+    z-index: 100; /* Bring to very front */
+    transform: rotate(0deg) scale(1.35) translate(0, 0) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* The Pin Icon */
+.pin {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  z-index: 10;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
+/* Image Frame [cite: 2026-02-21] */
+.photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+}
+
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.2) contrast(1.1);
+  /* The Polaroid Filter [cite: 2026-02-21] */
+}
+
+/* Handwritten Text [cite: 2026-02-21] */
+.caption {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.photo-frame-title {
+  font-family: "Playpen Sans Thai", cursive;
+  font-size: 0.8rem;
+  /* Smaller for 2-column layout */
+  margin: 0;
+}
+
+.photo-frame-desc {
+  font-family: 'Handlee', cursive;
+  font-size: 0.65rem;
+  color: #888;
+  margin: 2px 0 0;
 }
