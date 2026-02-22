@@ -1,112 +1,252 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Propose Day</title>
-    <link rel="stylesheet" href="../styles.css" />
-  </head>
-  <body class="theme-propose">
-    <div class="signature-wrap">
-      <div class="signature-text header-text">from dumbo...</div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Propose Day</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="theme-propose">
+  <div class="signature-wrap">
+    <div class="signature-text header-text">from dumbo...</div>
+  </div>
+
+  <div class="carousel-container">
+    <div class="date-header">FEBRUARY 08, 2026</div>
+    <hr />
+    <div id="view-his" class="slide active">
+      <span class="icon float">💍</span>
+      <h2>Will you be my Valentine?</h2>
+      <p>I promise to keep you laughing & annoyed!</p>
+
+      <div class="proposal-buttons">
+        <button id="yesBtn" onclick="celebrate()">Yes</button>
+        <button id="noBtn" onclick="handleNo()">No</button>
+      </div>
     </div>
-    <div class="carousel-container">
-      <div class="date-header">FEBRUARY 08, 2026</div>
-      <hr />
 
-      <div class="slide active">
-        <span class="icon float">💍</span>
-        <h2>Will you be my Valentine?</h2>
-        <p>I promise to keep you laughing & annoyed!</p>
+    <div id="view-hers" class="slide">
+      <div class="spotify-light-container">
+        <div class="spotify-header">
+          <div class="main-art-placeholder">
+            <img src="images/photo-collage.png.png">
+          </div>
+          <div class="header-text">
+            <p class="playlist-label">Public Playlist</p>
+            <h1 class="playlist-title">For my Dumbo</h1>
+            <p class="playlist-meta"><strong>Chandrima</strong> • 8 songs, 27 min</p>
+          </div>
+        </div>
 
-        <div class="proposal-buttons">
-          <button id="yesBtn" onclick="celebrate()">Yes</button>
-          <button id="noBtn" onclick="handleNo()">No</button>
+        <div class="spotify-actions">
+          <div class="play-icon"><img src="images/play-button.png"></div>
+          <div class="action-icon"><img src="images/add.png"></div>
+          <div class="action-icon"><img src="images/three-dots.png"></div>
+        </div>
+
+        <div class="spotify-rows">
+          <div class="song-row">
+            <span class="song-index">1</span>
+            <div class="song-thumb-placeholder"><img src="images/dumbo.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">DUMBO</p>
+              <p class="s-artist"><span>E</span> Travis Scott</p>
+            </div>
+            <span class="song-duration">3:58</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">2</span>
+            <div class="song-thumb-placeholder"><img src="images/i_like_you.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">I Like You</p>
+              <p class="s-artist">CHO JUNG SEOK</p>
+            </div>
+            <span class="song-duration">3:35</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">3</span>
+            <div class="song-thumb-placeholder"><img src="images/so_much.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">So Much</p>
+              <p class="s-artist">BAF</p>
+            </div>
+            <span class="song-duration">2:34</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">4</span>
+            <div class="song-thumb-placeholder"><img src="images/so_i.png"></div>
+            <div class="song-info">
+              <p class="s-name">So I</p>
+              <p class="s-artist">Charli xcx</p>
+            </div>
+            <span class="song-duration">3:31</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">5</span>
+            <div class="song-thumb-placeholder"><img src="images/i_have_a_question_sir.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">i have a question sir.</p>
+              <p class="s-artist"><span>E</span> overtonight, kaysnoto</p>
+            </div>
+            <span class="song-duration">2:08</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">6</span>
+            <div class="song-thumb-placeholder"><img src="images/will_you_be_my_valentine.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">Will You Be My Valentine?</p>
+              <p class="s-artist">RegVibeVault</p>
+            </div>
+            <span class="song-duration">5:23</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">7</span>
+            <div class="song-thumb-placeholder"><img src="images/please_please_please.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">Please Please Please</p>
+              <p class="s-artist"><span>E</span> Sabrina Carpenter</p>
+            </div>
+            <span class="song-duration">3:06</span>
+          </div>
+
+          <div class="song-row">
+            <span class="song-index">8</span>
+            <div class="song-thumb-placeholder"><img src="images/say_yes.jpg"></div>
+            <div class="song-info">
+              <p class="s-name">Say Yes</p>
+              <p class="s-artist">Loco, Punch</p>
+            </div>
+            <span class="song-duration">3:38</span>
+          </div>
         </div>
       </div>
-
-      <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
     </div>
-    <div class="signature-wrap">
-      <div class="signature-text footer-text">...to his madam</div>
+
+    <div class="compact-nav-stack">
+      <div class="segmented-control three-column">
+        <button id="btn-mine" class="tab-btn active" onclick="switchView('his')">Mine</button>
+
+        <a href="../index.html" class="home-icon-mid">🏠</a>
+
+        <button id="btn-yours" class="tab-btn" onclick="switchView('hers')">Yours</button>
+
+        <div id="nav-glider" class="glider"></div>
+      </div>
     </div>
-    <script>
-      let noCount = 0;
-      const yesBtn = document.getElementById("yesBtn");
-      const noBtn = document.getElementById("noBtn");
+  </div>
 
-      const messages = [
-        "Really? 🤔",
-        "Ki Nisthur! 👿",
-        "Moner dorja bondho! 😈",
-        "Not allowed! 🚫",
-        "No nai aar!!! 😂",
-      ];
+  <!-- <div class="proposal-tabs">
+      <button class="tab-btn active" onclick="switchView('his')">Mine</button>
+      <button class="tab-btn" onclick="switchView('hers')">Yours</button>
+    </div> -->
 
-      const noMessages = [
-        "Kotto boro sahosh! 🧐",
-        "Moner Dorja Bondho! 😈",
-        "Ki Nisthur! 👿",
-        "Seriously, No? 😤",
-        "Arrey Ki Mushkil! 😡",
-        "Abar Bhab! 😏",
-        "Thik Kore Bhab! 😬",
-        "Eishob Cholbe Na! 😈",
-        "Khela Theke Bhagon? 👿",
-        "No Mantam Na! 😠",
-      ];
+  <!-- 
 
-      let currentDeck = [...noMessages];
+  <div class="carousel-container">
+    <div class="date-header">FEBRUARY 08, 2026</div>
+    <hr />
 
-      function handleNo() {
-        noCount++;
+    <div class="slide active">
+      <span class="icon float">💍</span>
+      <h2>Will you be my Valentine?</h2>
+      <p>I promise to keep you laughing & annoyed!</p>
 
-        if (currentDeck.length === 0) {
-          currentDeck = [...noMessages];
-        }
-        // Comment for flow new workspace flor flush
-        // Pick a random index from the CURRENT deck
-        const randomIndex = Math.floor(Math.random() * currentDeck.length);
+      <div class="proposal-buttons">
+        <button id="yesBtn" onclick="celebrate()">Yes</button>
+        <button id="noBtn" onclick="handleNo()">No</button>
+      </div>
+    </div> -->
 
-        // Remove the message from the deck so it can't be picked again
-        const selectedMessage = currentDeck.splice(randomIndex, 1)[0];
-        // 1. Show Popup
-        showPopup(selectedMessage || "Access Denied! 🔒");
+  <!-- <a href="../index.html" class="back-link">🏠 Valentine's Week</a> -->
+  </div>
+  <div class="signature-wrap">
+    <div class="signature-text footer-text">...to his madam</div>
+  </div>
+  <script>
+    let noCount = 0;
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
 
-        // 2. Make Yes Button Bigger
-        let currentSize = 1 + noCount * 0.4;
-        yesBtn.style.transform = `scale(${currentSize})`;
+    const messages = [
+      "Really? 🤔",
+      "Ki Nisthur! 👿",
+      "Moner dorja bondho! 😈",
+      "Not allowed! 🚫",
+      "No nai aar!!! 😂",
+    ];
 
-        // 3. Move No Button randomly
-        const x = Math.random() * 150 - 75; // Random move left/right
-        const y = Math.random() * 100 - 50; // Random move up/down
-        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    const noMessages = [
+      "Kotto boro sahosh! 🧐",
+      "Moner Dorja Bondho! 😈",
+      "Ki Nisthur! 👿",
+      "Seriously, No? 😤",
+      "Arrey Ki Mushkil! 😡",
+      "Abar Bhab! 😏",
+      "Thik Kore Bhab! 😬",
+      "Eishob Cholbe Na! 😈",
+      "Khela Theke Bhagon? 👿",
+      "No Mantam Na! 😠",
+    ];
 
-        // 4. Vanish No Button after 5 clicks
-        if (noCount >= 5) {
-          noBtn.style.display = "none";
-        }
+    let currentDeck = [...noMessages];
+
+    function handleNo() {
+      noCount++;
+
+      if (currentDeck.length === 0) {
+        currentDeck = [...noMessages];
       }
+      // Comment for flow new workspace flor flush
+      // Pick a random index from the CURRENT deck
+      const randomIndex = Math.floor(Math.random() * currentDeck.length);
 
-      function showPopup(text) {
-        const alert = document.createElement("div");
-        alert.className = "custom-alert";
-        alert.innerText = text;
-        document.body.appendChild(alert);
+      // Remove the message from the deck so it can't be picked again
+      const selectedMessage = currentDeck.splice(randomIndex, 1)[0];
+      // 1. Show Popup
+      showPopup(selectedMessage || "Access Denied! 🔒");
 
-        setTimeout(() => {
-          alert.remove();
-        }, 2000);
+      // 2. Make Yes Button Bigger
+      let currentSize = 1 + noCount * 0.4;
+      yesBtn.style.transform = `scale(${currentSize})`;
+
+      // 3. Move No Button randomly
+      const x = Math.random() * 150 - 75; // Random move left/right
+      const y = Math.random() * 100 - 50; // Random move up/down
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+
+      // 4. Vanish No Button after 5 clicks
+      if (noCount >= 5) {
+        noBtn.style.display = "none";
       }
+    }
 
-      function celebrate() {
-        // Change theme to Rose (Red) for the success celebration!
-        document.body.className = "theme-rose";
+    function showPopup(text) {
+      const alert = document.createElement("div");
+      alert.className = "custom-alert";
+      alert.innerText = text;
+      document.body.appendChild(alert);
 
-        const container = document.querySelector(".carousel-container");
+      setTimeout(() => {
+        alert.remove();
+      }, 2000);
+    }
 
-        // Update the container with the success message and two buttons
-        container.innerHTML = `
+    function celebrate() {
+      // Change theme to Rose (Red) for the success celebration!
+      document.body.className = "theme-rose";
+
+      const container = document.querySelector(".carousel-container");
+
+      // Update the container with the success message and two buttons
+      container.innerHTML = `
                 <div class="date-header">FEBRUARY 08, 2026</div>
                 <hr>
                 <span class="icon pulse">💖</span>
@@ -118,7 +258,32 @@
                     <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
                 </div>
             `;
+    }
+
+    function switchView(side) {
+      const glider = document.getElementById('nav-glider');
+      const btnMine = document.getElementById('btn-mine');
+      const btnYours = document.getElementById('btn-yours');
+
+      if (side === 'his') {
+        btnMine.classList.add('active');
+        btnYours.classList.remove('active');
+        // Stay at the start
+        glider.style.transform = 'translateX(0)';
+
+        document.getElementById('view-his').style.display = 'block';
+        document.getElementById('view-hers').style.display = 'none';
+      } else {
+        btnYours.classList.add('active');
+        btnMine.classList.remove('active');
+        // Move across TWO columns (Mine + Home) to reach Yours
+        glider.style.transform = 'translateX(200%)';
+
+        document.getElementById('view-hers').style.display = 'block';
+        document.getElementById('view-his').style.display = 'none';
       }
-    </script>
-  </body>
+    }
+  </script>
+</body>
+
 </html>
