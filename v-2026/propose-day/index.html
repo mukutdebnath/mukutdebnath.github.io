@@ -134,7 +134,7 @@
       <div class="segmented-control three-column">
         <button id="btn-mine" class="tab-btn active" onclick="switchView('his')">Mine</button>
 
-        <a href="../index.html" class="home-icon-mid">🏠</a>
+        <a href="../index.html" class="home-icon-mid"><img src="../images/home.png"></a>
 
         <button id="btn-yours" class="tab-btn" onclick="switchView('hers')">Yours</button>
 
@@ -241,21 +241,20 @@
 
     function celebrate() {
       // Change theme to Rose (Red) for the success celebration!
-      document.body.className = "theme-rose";
+      // document.body.className = "theme-rose";
 
       const container = document.querySelector(".carousel-container");
 
+      const viewer = document.getElementById('view-his')
+
       // Update the container with the success message and two buttons
-      container.innerHTML = `
-                <div class="date-header">FEBRUARY 08, 2026</div>
+      viewer.innerHTML = `
                 <hr>
                 <span class="icon pulse">💖</span>
                 <h2>Yayyy! Woohooo! 🥳</h2>
-                <p>You made the right choice. (Actually, you had no choice! 😈😈)</p>
-                
+                <p>You made the right choice. <br> You anyways did not had any other choice! 😈</p>
                 <div class="nav-buttons" style="justify-content: center; gap: 10px; flex-direction: column;">
-                    <button onclick="location.reload()" style="width: 100%;">✨ Start Over</button>
-                    <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+                    <button id="propose-start-over" onclick="location.reload()" style="width: 100%;">✨ Start Over</button>
                 </div>
             `;
     }
@@ -277,7 +276,7 @@
         btnYours.classList.add('active');
         btnMine.classList.remove('active');
         // Move across TWO columns (Mine + Home) to reach Yours
-        glider.style.transform = 'translateX(200%)';
+        glider.style.transform = 'translateX(150%)';
 
         document.getElementById('view-hers').style.display = 'block';
         document.getElementById('view-his').style.display = 'none';

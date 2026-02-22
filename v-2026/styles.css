@@ -325,6 +325,7 @@ button {
 }
 
 .home-icon-mid {
+  height: 20px;
   text-decoration: none;
   font-size: 16px;
   text-align: center;
@@ -338,7 +339,7 @@ button {
 .glider {
   position: absolute;
   height: calc(100% - 4px);
-  width: calc(33.33% - 1px);
+  width: calc(40% - 2px);
   background-color: #3178b6;
   border-radius: 50px;
   left: 2px;
@@ -449,7 +450,7 @@ button {
 .song-row {
   display: flex;
   align-items: center;
-  padding: 4px 6px;
+  padding: 2px 6px;
   border-radius: 4px;
   transition: background 0.2s;
 }
@@ -486,12 +487,12 @@ button {
 .s-name {
   margin: 0;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .s-artist {
   margin: 0;
-  font-size: 12px;
+  font-size: 11px;
   color: #6a6a6a;
 }
 
@@ -506,7 +507,7 @@ button {
 
 .song-duration {
   color: #6a6a6a;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .proposal-buttons {
@@ -521,7 +522,7 @@ button {
 }
 
 #yesBtn {
-  background-color: var(--propose-blue);
+  background-color: var(--theme-red);
   /* Default */
   color: white;
   border: none;
@@ -529,9 +530,13 @@ button {
   z-index: 11;
 }
 
+.nav-buttons #propose-start-over {
+  background-color: var(--theme-red) !important;
+}
+
 /* Force 'Yes' button to take the theme color from the body class */
 .theme-propose #yesBtn {
-  background-color: var(--propose-blue) !important;
+  background-color: var(--theme-red) !important;
 }
 
 .theme-rose #yesBtn {
