@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine's Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playpen+Sans+Thai:wght@100..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="theme-vday">
+    <div class="signature-wrap">
+        <div class="signature-text header-text">from dumbo...</div>
+    </div>
+    <div class="carousel-container">
+        <div class="date-header">FEBRUARY 14, 2026</div>
+        <hr />
+        <header class="header">
+            <h1 class="main-title">Happy Valentine's Day!</h1>
+            <p class="subtitle">A scratchpad of our kiss day lunch date.</p>
+        </header>
+
+        <div id="quiz-container">
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+
+            <div class="quiz-card active" data-answer="B">
+                <h3>The Beginning</h3>
+                <p>When was our first hug?</p>
+                <div class="options">
+                    <button onclick="checkChoice(this, 'A')">Shaptami 2024</button>
+                    <button onclick="checkChoice(this, 'B')">Navami 2024</button>
+                    <button onclick="checkChoice(this, 'C')">Dashami 2024</button>
+                </div>
+                <div class="feedback hidden">
+                    <p>Hmm, koya dewar pore o mone nai 👿</p>
+                </div>
+            </div>
+
+            <div class="quiz-card" data-answer="11">
+                <h3>Memories</h3>
+                <p>For how many years have we known each other now?</p>
+                <input type="number" class="quiz-input" placeholder="Bolo years...">
+                <button class="submit-btn" onclick="checkNumeric(this)">Verify</button>
+                <div class="feedback hidden">
+                    <p>Abar guinna ko...</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="valentines-messages" style="display: none;">
+
+            <div class="letter-card card-you">
+                <div class="letter-header">From Me to You</div>
+                <div class="scroll-area">
+                    <div class="letter-text">
+                        Happy First Valentine's Day Love. This time last year, I had absolutely no hope that I would be
+                        celebrating Valentine's day with anyone. But now I can't imagine this day without you.
+                        You won't believe how surprised I was after realising that we clicked so well. I wished I had
+                        known this side of you earlier. I absolutely love that we get each other's craziness and
+                        weirdness. I love that we get pur desi jokes and even if you dont get my jokes, I'll explain it
+                        to you. I don't think I ever had a definite type but now it's definitely YOU.
+                        You know I had lost all hope of finding someone who'd love me equally as I would do. Saptaparna
+                        always gave me hope by saying, "One day you'll receive all the love that you've given and never
+                        got back.... you'll find someone who'll love you beyond your expectations." And I see it
+                        happening now.... I was overwhelmed when you sent the webpage link. Every time you asked me to
+                        check the updates, I got emotional thinking what did i do to deserve this? Nobody has put this
+                        much effort for me ever. Can you imagine how happy I am? ......You get upset for not bringing a
+                        chocolate but look at the other things you've done babe....Every day I fall for you a bit more
+                        than the previous day.
+
+                        Idk if it's too early or not but I think I'm falling in love with you ❤️
+                    </div>
+                </div>
+            </div>
+
+            <div class="letter-card card-me">
+                <div class="letter-header">From You to Me</div>
+                <div class="scroll-area">
+                    <div class="letter-text">
+                        Happy First Valentine's Day Love ❤️ I always had a lot of fun meeting you since 2023. Its so true that we click so well when we meet
+                    </div>
+                </div>
+            </div>
+
+            <div class="reset-wrapper">
+                <button class="start-over-btn" onclick="restartJourney()">Start Over ↺</button>
+            </div>
+        </div>
+
+
+        <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+    </div>
+    <div class="signature-wrap">
+        <div class="signature-text footer-text">...to his madam</div>
+    </div>
+    <script>
+        let currentStep = 0;
+        const cards = document.querySelectorAll('.quiz-card');
+        const progressFill = document.getElementById('progress-fill');
+
+        // CHOICE CHECKER
+        function checkChoice(btn, selected) {
+            const card = btn.closest('.quiz-card');
+            if (selected === card.dataset.answer) {
+                advance();
+            } else {
+                fail(card);
+            }
+        }
+
+        // NUMERIC CHECKER
+        function checkNumeric(btn) {
+            const card = btn.closest('.quiz-card');
+            const val = card.querySelector('.quiz-input').value;
+            if (val === card.dataset.answer) {
+                advance();
+            } else {
+                fail(card);
+            }
+        }
+
+        function fail(card) {
+            card.classList.add('shake');
+            card.querySelector('.feedback').classList.remove('hidden');
+            setTimeout(() => card.classList.remove('shake'), 400);
+        }
+
+        function advance() {
+            cards[currentStep].classList.remove('active');
+            currentStep++;
+
+            // Update Progress
+            progressFill.style.width = (currentStep / cards.length) * 100 + "%";
+
+            if (currentStep < cards.length) {
+                cards[currentStep].classList.add('active');
+            } else {
+                finalize();
+            }
+        }
+
+        function finalize() {
+            // Hide the quiz
+            document.getElementById('quiz-container').style.display = 'none';
+
+            // Show the messages immediately
+            document.getElementById('valentines-messages').style.display = 'block';
+
+            // Smooth scroll to the top of the messages
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function restartJourney() {
+            // 1. Reset Counter
+            currentStep = 0;
+
+            // 2. Reset UI Visibility
+            document.getElementById('valentines-messages').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+
+            // 3. Reset All Quiz Cards
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
+                card.querySelector('.feedback').classList.add('hidden');
+                if (card.querySelector('input')) card.querySelector('input').value = '';
+
+                // Make the first card active again
+                if (index === 0) card.classList.add('active');
+            });
+
+            // 4. Reset Progress Bar
+            progressFill.style.width = "0%";
+
+            // 5. Scroll to top for the fresh start
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>

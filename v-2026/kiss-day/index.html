@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kiss Day</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Playpen+Sans+Thai:wght@100..800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="theme-kiss">
+    <div class="signature-wrap">
+        <div class="signature-text header-text">from dumbo...</div>
+    </div>
+    <div class="carousel-container">
+        <div class="date-header">FEBRUARY 13, 2026</div>
+        <hr />
+        <header class="header">
+            <h1 class="main-title">Happy Kiss Day!</h1>
+            <p class="subtitle" style="font-family: 'Handlee', cursive">A scratchpad of our lunch date with some personalized messages.</p>
+        </header>
+        <div class="scrapbook-grid">
+            <div class="polaroid-card" onclick="handleCardClick(this)">
+                <div class="pin">📌</div>
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="photo-placeholder"><img src="images/photo_1.jpg"></div>
+                        <div class="caption">
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <p class="note-text">"<i><strong>Madam aap bohot sundar dikh rahi ho</strong></i>"
+                            <br>- remember what the waitress said while clicking our photo 🫠
+                            <br>ekdomm, amar madam shobcheye shundor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="polaroid-card" onclick="handleCardClick(this)">
+                <div class="pin">📌</div>
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="photo-placeholder"><img src="images/photo_2.jpg"></div>
+                        <div class="caption">
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <p class="note-text">Our final selfie after the kiss day lunch date,
+                            <br>and the last selfie of Valentine's Week,
+                            <br>and the selfie after our very first kiss 😘</p>
+                    </div>
+                </div>
+            </div>
+            <div class="polaroid-card" onclick="handleCardClick(this)">
+                <div class="pin">📌</div>
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="photo-placeholder"><img src="images/photo_3.jpg"></div>
+                        <div class="caption">
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <p class="note-text">Woohoo! 🎉
+                            <br> Phool kinon
+                            <br> I know you liked the flowers I chose for you that day, you had no second thought. 😊
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="polaroid-card" onclick="handleCardClick(this)">
+                <div class="pin">📌</div>
+                <div class="flip-inner">
+                    <div class="flip-front">
+                        <div class="photo-placeholder"><img src="images/photo_4.jpg"></div>
+                        <div class="caption">
+                        </div>
+                    </div>
+                    <div class="flip-back">
+                        <p class="note-text">And the last few moments from Cakes & Buns,
+                            thank you for an amazing and a lovely week, & the chocomins
+                            <br>Really enjoyed the time we spent, untill next time I will miss you 💞
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="../index.html" class="back-link">🏠 Valentine's Week</a>
+    </div>
+    <div class="signature-wrap">
+        <div class="signature-text footer-text">...to his madam</div>
+    </div>
+    <script>
+        document.querySelectorAll('.polaroid-card').forEach(card => {
+            // 1. Random Shifts (Just like Hug Day)
+            const randomRot = (Math.random() * 8 - 4).toFixed(2);
+            const randomX = (Math.random() * 16 - 8).toFixed(0);
+            const randomY = (Math.random() * 20 - 10).toFixed(0);
+
+            card.style.setProperty('--rotation', `${randomRot}deg`);
+            card.style.setProperty('--x-shift', `${randomX}px`);
+            card.style.setProperty('--y-shift', `${randomY}px`);
+        });
+
+        // 2. Click Handler: Zoom + Flip
+        function handleCardClick(card) {
+            // Clear other zoomed/flipped cards
+            document.querySelectorAll('.polaroid-card').forEach(other => {
+                if (other !== card) {
+                    other.classList.remove('is-zoomed', 'flipped');
+                }
+            });
+
+            // Toggle current card
+            card.classList.toggle('is-zoomed');
+            card.classList.toggle('flipped');
+
+            // Optional 3-second reset (as we used in Hug Day)
+            if (card.classList.contains('is-zoomed')) {
+                setTimeout(() => {
+                    card.classList.remove('is-zoomed', 'flipped');
+                }, 5000); // Increased to 5s so she can actually read the note
+            }
+        }
+    </script>
+</body>
+
+</html>
