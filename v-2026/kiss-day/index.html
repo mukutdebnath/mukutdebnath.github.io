@@ -19,70 +19,49 @@
     <div class="carousel-container">
         <div class="date-header">FEBRUARY 13, 2026</div>
         <hr />
-        <header class="header">
-            <h1 class="main-title">Happy Kiss Day!</h1>
-            <p class="subtitle" style="font-family: 'Handlee', cursive">A scratchpad of our lunch date with some personalized messages.</p>
-        </header>
-        <div class="scrapbook-grid">
-            <div class="polaroid-card" onclick="handleCardClick(this)">
-                <div class="pin">📌</div>
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div class="photo-placeholder"><img src="images/photo_1.jpg"></div>
-                        <div class="caption">
-                        </div>
-                    </div>
-                    <div class="flip-back">
-                        <p class="note-text">"<i><strong>Madam aap bohot sundar dikh rahi ho</strong></i>"
-                            <br>- remember what the waitress said while clicking our photo 🫠
-                            <br>ekdomm, amar madam shobcheye shundor</p>
-                    </div>
-                </div>
+
+        <section class="slide active" id="slide-1">
+            <div class="hero-gif-frame">
+                <img id="hero-gif" src="" alt="Kiss Day Intro">
             </div>
-            <div class="polaroid-card" onclick="handleCardClick(this)">
-                <div class="pin">📌</div>
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div class="photo-placeholder"><img src="images/photo_2.jpg"></div>
-                        <div class="caption">
-                        </div>
-                    </div>
-                    <div class="flip-back">
-                        <p class="note-text">Our final selfie after the kiss day lunch date,
-                            <br>and the last selfie of Valentine's Week,
-                            <br>and the selfie after our very first kiss 😘</p>
-                    </div>
-                </div>
+            <h1>Happy Kiss Day!</h1>
+            <p>And here is the wrap-up to the week! 😘</p>
+            <div class="nav-buttons" style="display: flex; justify-content: center;">
+                <button onclick="goToSlide(2)">Lessgo!</button>
             </div>
-            <div class="polaroid-card" onclick="handleCardClick(this)">
-                <div class="pin">📌</div>
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div class="photo-placeholder"><img src="images/photo_3.jpg"></div>
-                        <div class="caption">
+        </section>
+
+        <section class="slide" id="slide-2">
+            <div class="photo-board">
+                <script>
+                    // This loop creates 9 photo items to save HTML clutter
+                    for (let i = 1; i <= 8; i++) {
+                        document.write(`
+                        <div class="photo-item">
+                            <img src="images/photo${i}.jpg" alt="Kiss Day ${i}">
+                            <div class="kiss-mark" onclick="openKissPopup(${i})">💋</div>
                         </div>
-                    </div>
-                    <div class="flip-back">
-                        <p class="note-text">Woohoo! 🎉
-                            <br> Phool kinon
-                            <br> I know you liked the flowers I chose for you that day, you had no second thought. 😊
-                        </p>
-                    </div>
-                </div>
+                    `);
+                    }
+                </script>
             </div>
-            <div class="polaroid-card" onclick="handleCardClick(this)">
-                <div class="pin">📌</div>
-                <div class="flip-inner">
-                    <div class="flip-front">
-                        <div class="photo-placeholder"><img src="images/photo_4.jpg"></div>
-                        <div class="caption">
-                        </div>
+            <div class="nav-buttons" style="display: flex; justify-content: center;">
+                <button onclick="goToSlide(1)">Start Over</button>
+            </div>
+        </section>
+
+        <div id="kiss-thought-bubble" class="hidden">
+            <div class="bubble-inner">
+                <div class="bubble-tail"></div>
+
+                <div class="bubble-columns">
+
+                    <div class="col-left">
+                        <img id="popup-gif" src="" alt="Kiss Memory">
                     </div>
-                    <div class="flip-back">
-                        <p class="note-text">And the last few moments from Cakes & Buns,
-                            thank you for an amazing and a lovely week, & the chocomins
-                            <br>Really enjoyed the time we spent, untill next time I will miss you 💞
-                        </p>
+
+                    <div class="col-right">
+                        <p id="popup-text"></p>
                     </div>
                 </div>
             </div>
@@ -94,37 +73,119 @@
         <div class="signature-text footer-text">...to his madam</div>
     </div>
     <script>
-        document.querySelectorAll('.polaroid-card').forEach(card => {
-            // 1. Random Shifts (Just like Hug Day)
-            const randomRot = (Math.random() * 8 - 4).toFixed(2);
-            const randomX = (Math.random() * 16 - 8).toFixed(0);
-            const randomY = (Math.random() * 20 - 10).toFixed(0);
+        let popupTimer;
+        const bubble = document.getElementById('kiss-thought-bubble');
+        // 1. DATA REPOSITORY
+        const heroGifs = [
+            'tj-1.gif', 'tj-2.gif', 'tj-3.gif','tj-4.gif',
+            'tj-5.gif', 
+            'ls-1.gif', 'ls-2.gif', 
+        ];
 
-            card.style.setProperty('--rotation', `${randomRot}deg`);
-            card.style.setProperty('--x-shift', `${randomX}px`);
-            card.style.setProperty('--y-shift', `${randomY}px`);
-        });
+        const randomPopupGifs = [
+            'b-1.gif', 'b-2.gif', 'b-3.gif', 'b-4.gif',
+            'b-5.gif', 'b-6.gif', 'b-7.gif', 'b-8.gif',
+            'b-9.gif', 'b-10.gif', 'b-11.gif', 'b-12.gif'
+        ];
 
-        // 2. Click Handler: Zoom + Flip
-        function handleCardClick(card) {
-            // Clear other zoomed/flipped cards
-            document.querySelectorAll('.polaroid-card').forEach(other => {
-                if (other !== card) {
-                    other.classList.remove('is-zoomed', 'flipped');
-                }
+        // Data for each of the 9 popups
+        const kissData = {
+            1: "Lunch!!! Starter e pet bhoira gesloga but khawon bhala hoile o amar favourite food toh tui e 👉🏻👈🏻",
+            2: "As you always say and like to do, amar gallery tor photo te bhorti kora, onek space baaki kintu ohono! 😊",
+            3: "Look at this selfie!! Such an amazing view 🥹! But my favourite view will always be you 🌚",
+            4: "'Madam aap bohot sundar dikh rahi ho!' - remember what waitress said, yes amar madam shobcheye shundor 🫠",
+            5: "Selfie after the lunch, this photo will always remind me of the special moment, & to recreate it dabaya! 😁",
+            6: "Flower shopping!!! First time I saw so many varieties of roses 🫠 I know you liked the flowers I chose for you 🌚",
+            7: "And the last selfie, how did you feel holding my gorom hands? Shotti koira ko ... 😏",
+            8: "And the last few moments at Cakes & Buns! Thank you for an amazing week, untill next time I will miss you 💞",
+            9: "Love you to bits!"
+        };
+
+        // 2. INITIALIZATION
+        window.onload = () => {
+            // Pick Random Hero
+            const randomHero = heroGifs[Math.floor(Math.random() * heroGifs.length)];
+            document.getElementById('hero-gif').src = 'gifs/' + randomHero;
+
+            // Randomize Board Positions
+            document.querySelectorAll('.photo-item').forEach(item => {
+                const r = (Math.random() * 16 - 8).toFixed(2); // -8 to +8 deg
+                const x = (Math.random() * 20 - 10).toFixed(0); // -10 to +10 px
+                const y = (Math.random() * 20 - 10).toFixed(0);
+
+                item.style.setProperty('--r', `${r}deg`);
+                item.style.setProperty('--x', `${x}px`);
+                item.style.setProperty('--y', `${y}px`);
             });
+        };
 
-            // Toggle current card
-            card.classList.toggle('is-zoomed');
-            card.classList.toggle('flipped');
-
-            // Optional 3-second reset (as we used in Hug Day)
-            if (card.classList.contains('is-zoomed')) {
-                setTimeout(() => {
-                    card.classList.remove('is-zoomed', 'flipped');
-                }, 5000); // Increased to 5s so she can actually read the note
-            }
+        // 3. NAVIGATION
+        function goToSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide-' + n).classList.add('active');
         }
+
+        // 4. POPUP ENGINE
+        // function openKissPopup(id, triggerElement) {
+        //     const data = kissData[id];
+
+        //     // Populating Content
+        //     document.getElementById('popup-gif').src = 'images/' + data.gif;
+        //     document.getElementById('popup-text').innerText = data.text;
+
+        //     // Optional: Position the bubble relative to the tap! (Advanced refinement)
+        //     // The previous CSS centers it on the whole grid, which is fine, but you could 
+        //     // position it right above 'triggerElement' if you calculate offsets.
+        //     // For now, centering it over the whole page is less cluttery and easier.
+
+        //     // Reveal and start timer
+        //     bubble.classList.remove('closing');
+        //     bubble.classList.add('active');
+
+        //     // Reset Timer
+        //     clearTimeout(popupTimer);
+        //     popupTimer = setTimeout(closeKissPopup, 4000);
+        // }
+        function openKissPopup(id) {
+            const bubble = document.getElementById('kiss-thought-bubble');
+
+            // Pick a random GIF from the pool
+            const randomGif = randomPopupGifs[Math.floor(Math.random() * randomPopupGifs.length)];
+            // Get the static text for this specific photo
+            const staticText = kissData[id];
+
+            // Injecting Content
+            document.getElementById('popup-gif').src = 'gifs/' + randomGif;
+            document.getElementById('popup-text').innerText = staticText;
+
+            // Show Bubble
+            bubble.classList.remove('closing');
+            bubble.classList.add('active');
+
+            // Auto-close logic
+            clearTimeout(popupTimer);
+            popupTimer = setTimeout(closeKissPopup, 4500);
+        }
+
+        function closeKissPopup() {
+            // Add closing animation first
+            bubble.classList.add('closing');
+            // Then hide after animation ends (0.3s)
+            setTimeout(() => {
+                bubble.classList.remove('active');
+                bubble.classList.remove('closing');
+            }, 300);
+        }
+
+        // 3. TAP OUTSIDE TO CLOSE
+        document.addEventListener('click', (event) => {
+            // If the bubble is active AND the user tapped outside the bubble and the kiss mark
+            if (bubble.classList.contains('active') &&
+                !bubble.contains(event.target) &&
+                !event.target.classList.contains('kiss-mark')) {
+                closeKissPopup();
+            }
+        });
     </script>
 </body>
 
