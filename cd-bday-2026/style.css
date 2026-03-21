@@ -1,0 +1,355 @@
+/* 1. Fix the Canvas to the background */
+#confetti-canvas {
+    position: fixed; /* Changed from absolute */
+    top: 0; 
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Place it behind everything */
+    pointer-events: none;
+}
+
+/* 2. Fix the Background Gradient to the entire body */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe3e3 100%);
+    background-attachment: fixed; /* Keeps the gradient from scrolling */
+    min-height: 100vh;
+}
+
+/* 3. Make the Hero section transparent so we see the body background */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent; /* Remove the local background */
+    position: relative;
+    text-align: center;
+}
+
+.hero-content { z-index: 10; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-delayed {
+    opacity: 0; /* Start hidden */
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 1.2s; /* Starts AFTER the H1 pop (1s) */
+}
+
+.reveal-text {
+    font-size: 3.5rem;
+    color: #ff4d6d;
+    animation: popIn 1s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards;
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    80% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Scroll Mouse Animation */
+.scroll-indicator {
+    margin-top: 30px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards, bounce 2s infinite;
+    animation-delay: 2s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* The Main Path */
+#timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 50px 0;
+}
+
+/* Vertical Line in the middle */
+#timeline-container::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background: #ffd1d1;
+    top: 0; bottom: 0; left: 50%;
+}
+
+/* --- Base Animation State --- */
+.timeline-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 5%;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    filter: blur(5px); /* Adds a soft "dreamy" entrance */
+}
+
+/* Base Bubble Styles */
+.chat-bubble {
+    max-width: 75%;
+    padding: 8px 12px;
+    margin: 2px 10px; /* Tight vertical margin for clusters */
+    border-radius: 18px;
+    position: relative;
+    font-size: 0.9rem;
+}
+
+/* Sender: Me (Right Aligned) */
+.chat-her {
+    align-self: flex-end;
+    text-align: left;
+    margin-left: auto;
+    background-color: #dcf8c6;
+    color: #000;
+}
+
+/* Sender: Her (Left Aligned) */
+.chat-me {
+    align-self: flex-start;
+    text-align: left;
+    margin-right: auto;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+/* --- Directional Starting Positions --- */
+
+/* Her bubbles slide from left */
+.chat-me-wrapper {
+    align-items: flex-start;
+    transform: translateX(-50px);
+}
+
+/* Your bubbles slide from right */
+.chat-her-wrapper {
+    align-items: flex-end;
+    transform: translateX(50px);
+}
+
+/* Milestones and Celebrations slide from bottom */
+.celebration-wrapper {
+    transform: translateY(40px);
+}
+
+/* --- Milestone Container (Adds Depth) --- */
+.milestone-wrapper {
+    perspective: 1000px; /* Essential for 3D effect */
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- The Flipping Card --- */
+.milestone-card {
+    width: 220px;
+    height: 220px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth flip timing */
+    transform-style: preserve-3d; /* Key: Enables 3D for children */
+    border-radius: 50%;
+}
+
+/* State when flipped by JS */
+.milestone-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* --- Common Front & Back Styles --- */
+.milestone-front,
+.milestone-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid white;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    backface-visibility: hidden; /* Key: Hides the back when not facing user */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* --- The Front (The Photo) --- */
+.milestone-front {
+    z-index: 2; /* Sits on top */
+    transform: rotateY(0deg); /* Facing forward */
+    background: white; /* Fallback */
+}
+
+.milestone-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- The Back (The Message) --- */
+.milestone-back {
+    background: #ff758f; /* Pink Theme for the back */
+    color: white;
+    transform: rotateY(180deg); /* Starts already flipped */
+}
+
+.milestone-back h3 {
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.milestone-back p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    line-height: 1.3;
+}
+
+/* Emoji Particle Style */
+.emoji-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 2rem;
+    animation: floatUp 2s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(1.5); opacity: 0; }
+}
+
+
+/* --- The "Active" State (Triggered by JS) --- */
+.timeline-item.is-visible {
+    opacity: 1;
+    transform: translate(0);
+    filter: blur(0);
+}
+
+/* Contextual Bordering Logic */
+/* Dynamic Border Radii for Clusters */
+.chat-her.top    { border-bottom-right-radius: 4px; margin-bottom: 2px; }
+.chat-her.middle { border-top-right-radius: 4px; border-bottom-right-radius: 4px; margin-top: 2px; margin-bottom: 2px; }
+.chat-her.bottom { border-top-right-radius: 4px; margin-top: 2px; }
+
+.chat-me.top    { border-bottom-left-radius: 4px; margin-bottom: 2px; }
+.chat-me.middle { border-top-left-radius: 4px; border-bottom-left-radius: 4px; margin-top: 2px; margin-bottom: 2px; }
+.chat-me.bottom { border-top-left-radius: 4px; margin-top: 2px; }
+
+.message-text {
+    margin: 0;
+}
+
+.reply-box p {
+    margin: 0;
+}
+
+/* The Reply Box (Inside the bubble) */
+.reply-box {
+    background: rgba(0, 0, 0, 0.06);
+    /* border-left: 3px solid #075e54;  */
+    padding: 6px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* --- Reply Box with Thumbnail --- */
+.reply-box.has-thumb {
+    display: flex;
+    align-items: stretch; /* This forces children to be the same height */
+    gap: 10px;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    min-height: 40px; /* Minimum height for 1-line replies */
+}
+
+.reply-thumb {
+    width: 45px;      /* Keep width fixed */
+    height: auto;     /* Let flexbox determine height */
+    flex-shrink: 0;   /* Don't let the image get squished horizontally */
+    object-fit: cover; /* This is the secret—it crops the image to fit the new height */
+    /* border-radius: 4px; */
+}
+
+/* .reply-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis; 
+} */
+
+.reply-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the 1 or 2 lines vertically against the image */
+    flex: 1;
+}
+
+.reply-content p {
+    margin: 0;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    /* ... keep your line-clamp logic from before ... */
+}
+
+/* --- Main Image in Bubble --- */
+.bubble-image {
+    width: 100%;
+    max-width: 250px; /* Limits size on large screens */
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* If there is no text, remove the bottom margin of the image */
+.bubble-image:last-child {
+    margin-bottom: 0;
+}
+
+.date-wrapper {
+    align-items: center;
+    padding: 20px 0; /* Add a bit of vertical breathing room */
+}
+
+.timeline-date-header span {
+    background: rgba(255, 255, 255, 0.8);
+    color: #888;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.05);
+}
