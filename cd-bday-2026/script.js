@@ -69,7 +69,7 @@ const storyData = [
         type: 'milestone',
         title: "Puja 2023",
         photo: 'dp-2023-rides.jpg',
-        message: "When it all started",
+        message: "Our first ride in Puja 🫠",
         emoji: '🎉',
     },
 
@@ -109,7 +109,7 @@ const storyData = [
         text: "Bye bye 🥹",
         replyTo: {
             sender: 'You • Status',
-            text: "Humara Mukutu ab Sundar Pichai ks MUkutu bann gaya 😞✨ Bye bye Mukutu....Phir aana treat dene 😈",
+            text: "Humara Mukutu ab Sundar Pichai ka Mukutu bann gaya 😞✨ Bye bye Mukutu....Phir aana treat dene 😈",
             thumb: 'dp-2024-portrait.jpg',
         }
     },
@@ -283,7 +283,7 @@ const storyData = [
         sender: 'her',
         text: "Tore koisi shahrukh khan pose<br>Tui dekhi one handed pose des",
         replyTo: {
-            sender: 'Mukutu',
+            sender: 'Mukutu • Story',
             text: 'Blue Lagoon, Meghalaya',
             thumb: 'insta-story-meghalaya.jpg'
         }
@@ -432,7 +432,7 @@ const storyData = [
     {
         type: 'photo',
         src: 'dp-2025-collage.jpg',
-        caption: 'Puja 2024' // Optional caption
+        caption: 'Puja 2025' // Optional caption
     },
     { type: 'date', text: 'October 17, 2025' },
     {
@@ -997,6 +997,13 @@ const storyData = [
         type: 'photo',
         src: 'cd-collage.jpg',
     },
+    {
+        type: 'milestone',
+        title: "February 2026",
+        photo: 'us.SELFIE.jpg',
+        message: "Kere jaani it felt incomplete without this selfie 😅",
+        emoji: '🎉',
+    },
 
     
     // my madam
@@ -1006,11 +1013,6 @@ const storyData = [
     // art propose reaction, 
     // surprise propose
     // --- 5. A Celebration Break (Mid-scroll vibe) ---
-    {
-        type: 'celebration',
-        icon: '💖',
-        text: "And just like that, everything changed..."
-    },
 ];
 
 
